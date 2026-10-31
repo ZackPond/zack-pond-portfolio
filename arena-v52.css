@@ -1,0 +1,136 @@
+/* V53 — the complete eight-sided game showcase rotates as one 3D cylinder. */
+.realm-interior.environment-arena main{max-width:1320px;padding:22px 24px 100px}
+.arena-showcase{max-width:1180px;margin:auto;--face-width:min(92vw,1000px);--cylinder-radius:calc(var(--face-width) * 1.20710678)}
+.arena-cylinder-controls{height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:linear-gradient(160deg,#07182ff2,#102d4cdb);border:1px solid #91b7dba3;padding:12px 23px;position:relative;z-index:2}
+.arena-controls-inline{display:flex;align-items:center;gap:17px;font-family:'Cinzel',serif;color:#e5f1ff}
+.arena-arrow{border:1px solid #aaccec;background:#193c61;color:white;font:normal 2.1rem Georgia,serif;width:47px;height:46px;cursor:pointer}
+.arena-arrow:hover,.arena-arrow:focus-visible{background:#2c608f;outline:2px solid #def1ff}
+.arena-cylinder-viewport{height:1450px;position:relative;overflow:hidden;perspective:2400px;perspective-origin:50% 290px;margin:18px auto 0;isolation:isolate}
+.arena-cylinder{width:var(--face-width);height:1390px;margin:0 auto;position:relative;transform-style:preserve-3d;transform:translateZ(calc(-1 * var(--cylinder-radius))) rotateY(var(--turn,0deg));transition:transform 1.05s cubic-bezier(.25,.65,.15,1);will-change:transform}
+.arena-cylinder.no-motion{transition:none}
+.arena-cylinder-face{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:linear-gradient(145deg,rgba(5,18,37,.98),rgba(9,35,64,.97));border:2px solid #9cbee3bd;box-shadow:inset 0 0 42px #040f24,0 5px 18px #0008;padding:clamp(22px,4vw,48px);backface-visibility:hidden;transform:rotateY(calc(var(--face-index) * 45deg)) translateZ(var(--cylinder-radius));}
+.arena-cylinder-face:nth-child(1){--face-index:0}.arena-cylinder-face:nth-child(2){--face-index:1}.arena-cylinder-face:nth-child(3){--face-index:2}.arena-cylinder-face:nth-child(4){--face-index:3}.arena-cylinder-face:nth-child(5){--face-index:4}.arena-cylinder-face:nth-child(6){--face-index:5}.arena-cylinder-face:nth-child(7){--face-index:6}.arena-cylinder-face:nth-child(8){--face-index:7}
+.arena-game-heading{margin-bottom:25px}.arena-game-heading h1{font:500 clamp(2rem,4.4vw,3.7rem) 'Cinzel',serif;margin:12px 0}.arena-game-heading p{line-height:1.7;color:#d3e3f5;font-size:1.05rem;max-width:76ch}
+.arena-cylinder-face h2{font:500 1.6rem 'Cinzel',serif;margin:20px 0}
+.arena-player{height:auto;aspect-ratio:16/8.8;background:#030d1c;border:2px solid #a2c1e5b0;overflow:hidden}.arena-player iframe{display:block;width:100%;height:100%;border:0}.arena-player-empty{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:15px}.arena-player-empty img{height:88px;max-width:180px;object-fit:contain}.arena-player-empty strong{font:500 1.2rem 'Cinzel',serif}.arena-player-empty p{font-size:.9rem;margin:2px 0;max-width:44ch;color:#c5d7eb}.arena-player-empty a,.arena-more{color:white;border:1px solid #99c3e8;background:#244a72;padding:9px 18px;display:inline-block;text-decoration:none}.arena-player-empty a:hover,.arena-more:hover{background:#37699d}
+.arena-development{margin-top:28px}.arena-development-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.arena-development-grid article{background:#0a223de3;border:1px solid #abc6e47b;padding:17px}.arena-development-grid h3{font:500 1rem 'Cinzel',serif;margin:0 0 10px}.arena-development-grid p{line-height:1.56;color:#c8d8e9;margin:0;font-size:.91rem}.arena-development .chips{margin:17px 0}.arena-rotation-hint{text-align:center;color:#c6dcf3;font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.13em;margin-top:13px}
+@media(max-width:760px){.arena-cylinder-controls{height:auto;padding:15px;flex-wrap:wrap}.arena-controls-inline{width:100%;justify-content:space-between;font-size:.8rem}.arena-cylinder-viewport{height:1510px;perspective:1700px;perspective-origin:50% 260px}.arena-cylinder{height:1470px}.arena-cylinder-face{padding:19px}.arena-development-grid{grid-template-columns:1fr;gap:8px}.arena-development-grid article{padding:12px}.arena-player{aspect-ratio:4/3}.arena-game-heading p{font-size:.94rem}.arena-cylinder-face h2{font-size:1.25rem}}
+@media(prefers-reduced-motion:reduce){.arena-cylinder{transition:none}}
+
+/* V54: mask the cylindrical stage to a single front-facing panel.
+   Adjacent faces are only exposed inside this aperture during rotation. */
+.arena-cylinder-viewport{width:var(--face-width);max-width:100%;overflow:hidden;clip-path:inset(0 0 0 0);}
+.arena-cylinder{margin-inline:auto;}
+
+/* V56 — short itch.io promotional widgets are not playable game exports. */
+.arena-itch-widget{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;padding:22px;text-align:center;background:rgba(5,16,34,.84)}
+.arena-itch-widget p{margin:0;max-width:55ch;color:#c9dbef}
+.arena-itch-widget iframe{display:block;max-width:100%;height:167px;flex:0 0 167px;border:0}
+.arena-itch-widget a{color:#eaf4ff;text-decoration:underline;text-underline-offset:4px}
+
+/* V60: Unity's fixed 960x600 canvas cannot fit in the narrow 3D face.
+   Host the full player outside all perspective/transform/clip ancestors. */
+.arena-unity-launch{height:100%;min-height:320px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px;text-align:center;padding:30px;background:linear-gradient(135deg,#09152a,#1a3653)}
+.arena-unity-launch strong{font:500 1.55rem 'Cinzel',serif;color:#e9f3ff}
+.arena-unity-launch p{max-width:55ch;color:#d3e6f8;line-height:1.6}
+.arena-unity-launch button,.arena-unity-launch a{color:#fff;border:1px solid #b1d3f4;background:#22537b;padding:12px 22px;font:600 1rem Georgia,serif;cursor:pointer}
+.arena-unity-launch a{background:transparent}
+.arena-unity-open{overflow:hidden}
+.arena-unity-overlay:not([hidden]){position:fixed;inset:0;z-index:99999;background:rgba(0,6,17,.95);display:flex;align-items:center;justify-content:center;padding:12px}
+.arena-unity-dialog{width:min(1200px,100%);height:min(860px,calc(100dvh - 24px));display:flex;flex-direction:column;background:#07172b;border:2px solid #9bc1e5;box-shadow:0 0 60px #000}
+.arena-unity-dialog-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 16px;background:#0d2947;color:#fff}
+.arena-unity-dialog-bar>div{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.arena-unity-dialog-bar button,.arena-unity-dialog-bar a{border:1px solid #99bfe3;background:#173e65;color:#fff;padding:9px 13px;text-decoration:none;cursor:pointer;font-size:.9rem}
+.arena-unity-frame{flex:1;min-height:0;overflow:auto;background:#101820}
+.arena-unity-frame iframe{width:100%;height:100%;min-height:700px;border:0;display:block}
+.arena-unity-dialog:fullscreen{width:100vw;height:100vh;max-width:none;max-height:none}
+.arena-unity-dialog:fullscreen .arena-unity-frame iframe{min-height:calc(100vh - 65px)}
+@media(max-width:900px){.arena-unity-dialog{width:100%;height:calc(100dvh - 24px)}.arena-unity-frame iframe{width:max(100%,980px);min-height:740px}}
+
+/* V61: more generous and legible written game case studies */
+.arena-cylinder-viewport{height:1760px}
+.arena-cylinder{height:1720px}
+.arena-game-heading p{font-size:1.07rem;line-height:1.85;max-width:84ch}
+.arena-development-grid{gap:16px}
+.arena-development-grid article{padding:23px 22px;background:linear-gradient(145deg,rgba(9,37,67,.97),rgba(5,20,42,.95));border:1px solid rgba(166,202,234,.6);box-shadow:inset 0 1px rgba(233,246,255,.1),0 6px 24px rgba(0,0,0,.2)}
+.arena-development-grid h3{font-size:1.08rem;margin-bottom:14px;color:#f1f8ff}
+.arena-development-grid p{font-size:.97rem;line-height:1.75;color:#d9e6f3}
+@media(max-width:760px){.arena-cylinder-viewport{height:2400px}.arena-cylinder{height:2360px}.arena-development-grid article{padding:17px}.arena-game-heading p{font-size:1rem}}
+
+/* V62: labels include verified development engines */
+.arena-cylinder-face .tag{letter-spacing:.085em;line-height:1.45}
+
+/* V79: nine-sided cylinder for Tempest Relics */
+.arena-showcase{--cylinder-radius:calc(var(--face-width) * 1.37373871)}
+.arena-cylinder-face{transform:rotateY(calc(var(--face-index) * 40deg)) translateZ(var(--cylinder-radius))}
+.arena-cylinder-face:nth-child(9){--face-index:8}
+
+/* V91: arena full-width navigation bar, large arrows, centered game name */
+.arena-cylinder-controls{height:108px;padding:0;display:block;overflow:hidden;}
+.arena-controls-inline{width:100%;height:100%;display:grid;grid-template-columns:minmax(106px,24%) minmax(0,1fr) minmax(106px,24%);gap:0;align-items:stretch;}
+.arena-cylinder-controls .arena-arrow{width:100%;height:100%;min-height:108px;border:0;border-radius:0;background:linear-gradient(135deg,#173e66,#24547b);font:normal clamp(3.4rem,6vw,5.7rem)/1 Georgia,serif;display:flex;align-items:center;justify-content:center;transition:background .15s,box-shadow .15s;}
+.arena-cylinder-controls .arena-arrow:first-child{border-right:1px solid #91b7dba3;}
+.arena-cylinder-controls .arena-arrow:last-child{border-left:1px solid #91b7dba3;}
+.arena-cylinder-controls .arena-arrow:hover,.arena-cylinder-controls .arena-arrow:focus-visible{background:linear-gradient(135deg,#2a5c87,#387aab);outline-offset:-4px;}
+.arena-cylinder-controls .arena-current-game{margin:0;padding:10px 16px;min-width:0;display:flex;align-items:center;justify-content:center;text-align:center;color:#edf6ff;font:600 clamp(1.45rem,3.1vw,2.7rem)/1.18 'Cinzel',Georgia,serif;letter-spacing:.045em;text-wrap:balance;}
+@media(max-width:760px){.arena-cylinder-controls{height:90px;padding:0;}.arena-controls-inline{grid-template-columns:minmax(65px,20%) minmax(0,1fr) minmax(65px,20%);height:100%;}.arena-cylinder-controls .arena-arrow{min-height:90px;font-size:3.5rem;}.arena-cylinder-controls .arena-current-game{font-size:clamp(1.15rem,4.5vw,1.8rem);padding:8px;}}
+
+/* V92: title stays solely within game face; side-mounted controls and nine indicators */
+.arena-stage-nav{display:grid;grid-template-columns:clamp(56px,7vw,108px) minmax(0,1fr) clamp(56px,7vw,108px);gap:clamp(6px,1.2vw,18px);align-items:start;max-width:100%;}
+.arena-stage-nav .arena-cylinder-viewport{width:100%;margin:0;min-width:0;}
+.arena-stage-nav .arena-side-arrow{display:flex;align-items:center;justify-content:center;position:sticky;top:calc(var(--site-header-height,95px) + 18px);height:clamp(120px,22vw,245px);width:100%;margin-top:clamp(120px,20vw,270px);border:1px solid #b5cbe0;border-radius:14px;background:linear-gradient(140deg,#728ca5 0%,#254663 22%,#0e2944 52%,#284b6d 82%,#8eacc6 100%);box-shadow:inset 0 2px 4px #eff8ff66,inset 0 -8px 20px #041729,0 8px 24px #010d20b0;color:#e8f5ff;font:normal clamp(4rem,8vw,7.5rem)/1 Georgia,serif;cursor:pointer;z-index:5;transition:background .18s,transform .18s,box-shadow .18s;}
+.arena-stage-nav .arena-side-arrow:hover,.arena-stage-nav .arena-side-arrow:focus-visible{background:linear-gradient(145deg,#a8c1d7,#315c81 37%,#234666 65%,#a6c4da);transform:scale(1.035);outline:2px solid #d6efff;outline-offset:2px;}
+.arena-indicators{display:flex;align-items:center;justify-content:center;gap:10px;margin:12px auto 26px;position:relative;z-index:5;}
+.arena-indicator{display:block;width:13px;height:8px;padding:0;border:1px solid #8aa8c7;border-radius:999px;background:#294761;opacity:.7;cursor:pointer;transition:width .2s,background .2s,opacity .2s;}
+.arena-indicator[aria-current=true]{width:37px;background:#e4f1ff;border-color:#f5faff;opacity:1;box-shadow:0 0 12px #a7cdec90;}
+.arena-indicator:focus-visible{outline:2px solid white;outline-offset:4px;}
+@media(max-width:760px){.arena-stage-nav{grid-template-columns:40px minmax(0,1fr) 40px;gap:3px}.arena-stage-nav .arena-side-arrow{height:92px;margin-top:155px;font-size:3.7rem;border-radius:7px}.arena-indicators{gap:6px}.arena-indicator{width:10px}.arena-indicator[aria-current=true]{width:25px}}
+
+/* V93: widen the game stage and remove the boxed side controls.
+   The face width stays below the actual center track at all breakpoints. */
+.realm-interior.environment-arena main{max-width:1420px;padding-inline:clamp(10px,2vw,24px)}
+.arena-showcase{max-width:1280px;--face-width:min(1100px, calc(100vw - 154px))}
+.arena-stage-nav{grid-template-columns:clamp(32px,3.6vw,46px) minmax(0,1fr) clamp(32px,3.6vw,46px);gap:clamp(4px,.6vw,10px)}
+.arena-stage-nav .arena-cylinder-viewport{width:var(--face-width);max-width:100%;margin-inline:auto}
+.arena-stage-nav .arena-side-arrow,.arena-stage-nav .arena-side-arrow:hover,.arena-stage-nav .arena-side-arrow:focus-visible{
+  width:100%;height:112px;min-height:0;margin-top:clamp(130px,19vw,248px);padding:0;
+  border:0;border-radius:0;background:transparent;box-shadow:none;outline:0;
+  color:#dceeff;font:normal clamp(3rem,5.2vw,5.2rem)/1 Georgia,serif;
+  text-shadow:0 0 8px #b1dfff,0 0 23px #4c9fdc,0 0 46px #227acb;
+  transition:transform .2s ease,color .2s ease,text-shadow .2s ease;
+}
+.arena-stage-nav .arena-side-arrow:hover,.arena-stage-nav .arena-side-arrow:focus-visible{
+  color:#fff;transform:scale(1.14);text-shadow:0 0 10px white,0 0 32px #8edaff,0 0 54px #409eee;
+}
+.arena-stage-nav .arena-side-arrow:focus-visible span{outline:2px solid #daefff;outline-offset:5px;border-radius:4px}
+@media(max-width:760px){
+  .arena-showcase{--face-width:calc(100vw - 114px)}
+  .realm-interior.environment-arena main{padding-inline:10px}
+  .arena-stage-nav{grid-template-columns:34px minmax(0,1fr) 34px;gap:3px}
+  .arena-stage-nav .arena-side-arrow,.arena-stage-nav .arena-side-arrow:hover,.arena-stage-nav .arena-side-arrow:focus-visible{height:90px;margin-top:125px;font-size:3.2rem}
+  .arena-cylinder-face{padding:clamp(10px,3vw,19px)}
+}
+
+/* V186: unmistakable, generously sized barrel rotation controls. */
+.arena-stage-nav{grid-template-columns:clamp(66px,7.5vw,112px) minmax(0,1fr) clamp(66px,7.5vw,112px);gap:clamp(6px,.8vw,12px)}
+.arena-stage-nav .arena-side-arrow,
+.arena-stage-nav .arena-side-arrow:hover,
+.arena-stage-nav .arena-side-arrow:focus-visible{
+  min-height:144px;height:clamp(144px,19vw,230px);border:1px solid #91bddd88;border-radius:16px;
+  background:linear-gradient(145deg,#23486aeb,#102b47f2 62%,#1b4464ea);
+  box-shadow:inset 0 1px 0 #e2f3ff77,0 6px 22px #0313238a;
+  font-size:clamp(4.8rem,8vw,8rem);
+}
+.arena-stage-nav .arena-side-arrow:hover,.arena-stage-nav .arena-side-arrow:focus-visible{background:linear-gradient(145deg,#416b91,#20517a 65%,#3477a1);box-shadow:inset 0 1px 0 #ffffff91,0 0 25px #7bc7ff6b;}
+@media(max-width:760px){.arena-showcase{--face-width:calc(100vw - 164px)}.arena-stage-nav{grid-template-columns:72px minmax(0,1fr) 72px;gap:4px}.arena-stage-nav .arena-side-arrow,.arena-stage-nav .arena-side-arrow:hover,.arena-stage-nav .arena-side-arrow:focus-visible{min-height:120px;height:120px;margin-top:125px;font-size:5.5rem;border-radius:11px}}
+@media(max-width:420px){.arena-showcase{--face-width:calc(100vw - 126px)}.arena-stage-nav{grid-template-columns:53px minmax(0,1fr) 53px;gap:3px}.arena-stage-nav .arena-side-arrow,.arena-stage-nav .arena-side-arrow:hover,.arena-stage-nav .arena-side-arrow:focus-visible{min-height:110px;height:110px;font-size:4.7rem}}
+
+/* V207: keep every rotating face within the actual available center column.
+   Fixed viewport-derived face widths previously overlapped and were clipped. */
+.arena-showcase{width:100%;max-width:1280px;min-width:0;}
+.arena-showcase .arena-stage-nav{width:100%;min-width:0;}
+.arena-showcase .arena-stage-nav .arena-cylinder-viewport{width:100%;max-width:100%;min-width:0;}
+.arena-showcase .arena-cylinder{width:var(--face-width);max-width:100%;}
+.arena-showcase .arena-cylinder-face{box-sizing:border-box;max-width:100%;overflow-x:hidden;}
+.arena-showcase .arena-player-group,.arena-showcase .arena-development,.arena-showcase .arena-development-grid{min-width:0;}
+.arena-showcase .arena-cylinder-face p,.arena-showcase .arena-cylinder-face h1,.arena-showcase .arena-cylinder-face h2,.arena-showcase .arena-cylinder-face h3{overflow-wrap:anywhere;}

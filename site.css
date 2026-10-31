@@ -1,0 +1,363 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');:root{--navy:#071426;--night:#081b32;--blue:#153757;--silver:#dbe9ff;--muted:#a9bdd5;--line:#9ebde35a;--light:#b6dfff}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--navy);color:var(--silver);font-family:'DM Sans',sans-serif}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}.skip{position:absolute;top:-200px;left:5px;z-index:100;background:white;color:black;padding:10px}.skip:focus{top:5px}.home-top{position:fixed;z-index:20;right:16px;bottom:18px;display:flex;gap:7px;align-items:center}.home-top>*{border:1px solid #bcd9ef83;background:#071b30eb;color:#e8f1ff;border-radius:8px;padding:10px 12px;box-shadow:0 6px 24px #0006}.home-top .home-brand{display:none}.home-top button:hover{background:#1b3a60}.mobile-menu{position:fixed;right:16px;bottom:68px;z-index:25;background:#071b30f5;padding:12px;border:1px solid #bcd9ef83;border-radius:12px;box-shadow:0 14px 45px #0009;max-height:70vh;overflow:auto;width:min(300px,90vw)}.mobile-menu a{display:block;padding:10px 12px;border-radius:7px}.mobile-menu a:hover,.mobile-menu a:focus-visible{background:#25486b}.scene-scroll{overflow-x:auto;overflow-y:hidden;scrollbar-color:#8eaccb #07182b}.scene{width:100%;min-width:1000px;aspect-ratio:3/2;position:relative;background:#122c4b;isolation:isolate;overflow:hidden}.scene-art{width:100%;height:100%;display:block;object-fit:fill}.zone{position:absolute;display:block;z-index:3;border:1px solid transparent;border-radius:6px;transition:background .22s,border-color .22s,box-shadow .22s;cursor:pointer}.zone:hover,.zone:focus-visible{background:#99d1ff20;border-color:#c0e5ffbd;box-shadow:0 0 0 3px #132b4b77,0 0 26px #66aeff93;outline:none}.zone:active{background:#d8eaff29}.scene-shimmer{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(circle at 71% 33%,#b6e5ff12,transparent 22%);animation:breath 7s ease-in-out infinite}.arcane-orb{position:absolute;left:69.8%;top:31.4%;width:2.5%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#d7f9ff88,#7bccff42 40%,transparent 73%);box-shadow:0 0 20px 7px #77bfff57;z-index:2;pointer-events:none;animation:breath 4s ease-in-out infinite}@keyframes breath{50%{opacity:.4;transform:scale(1.08)}}.still .scene-shimmer,.still .arcane-orb{animation:none;opacity:0}.home-bottom{padding:9px 18px;color:#9eb5ca;font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.home-bottom a{text-decoration:underline;text-underline-offset:3px}.zone.z-home{left:29%;top:0;width:7%;height:9%}.zone.z-realm{left:36%;top:0;width:7.7%;height:9%}.zone.z-citadel-nav{left:44%;top:0;width:7%;height:9%}.zone.z-arena-nav{left:52%;top:0;width:7%;height:9%}.zone.z-workshop-nav{left:60%;top:0;width:8%;height:9%}.zone.z-hall-nav{left:69%;top:0;width:10%;height:9%}.zone.z-citadel{left:35.5%;top:25%;width:14%;height:9%}.zone.z-arena{left:30%;top:46%;width:12%;height:8%}.zone.z-workshop{left:65%;top:35%;width:14%;height:8%}.zone.z-hall{left:72.5%;top:53%;width:17%;height:9%}.zone.z-archives{left:86%;top:24%;width:13%;height:8%}.zone.z-start{left:13.7%;top:29%;width:16%;height:5.5%}.zone.z-featured{left:3.5%;top:91%;width:12%;height:6%}.zone.z-paradox{left:56%;top:80%;width:10%;height:17%}.zone.z-shorts{left:66%;top:80%;width:10.5%;height:17%}.zone.z-dnd{left:77%;top:80%;width:10%;height:17%}.zone.z-minigame{left:88%;top:80%;width:10%;height:17%}.zone.z-itch{left:88%;top:1.7%;width:3%;height:5%}.zone.z-linkedin{left:92%;top:1.7%;width:3%;height:5%}.zone.z-youtube{left:95.5%;top:1.7%;width:3%;height:5%}.zone.z-latest{left:93.2%;top:76%;width:5%;height:4%}@media(max-width:1050px){.scene{width:1150px;min-width:1150px}.home-top .home-brand{display:inline-block}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}.inner{min-height:100vh;background:radial-gradient(ellipse at 85% 2%,#315a8460,transparent 45%),linear-gradient(145deg,#09162a,#0b223d 45%,#071426);padding-bottom:65px}.site-header{position:sticky;top:0;z-index:15;background:#061426eb;backdrop-filter:blur(16px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:15px max(22px,calc((100vw - 1200px)/2));gap:22px}.site-logo{font-family:'Cinzel',serif;font-size:1.22rem;letter-spacing:.07em}.site-logo small{font:500 10px 'DM Sans',sans-serif;display:block;letter-spacing:.17em;color:#a6bfdc;padding-top:3px}.site-nav{display:flex;align-items:center;flex-wrap:wrap;gap:5px}.site-nav a{border-radius:5px;padding:9px 11px;color:#c6d7ed;font-size:13px}.site-nav a:hover,.site-nav a:focus-visible,.site-nav a.active{background:#1e456b;color:#fff}.inner main{max-width:1200px;margin:auto;padding:48px 24px 0}.breadcrumbs{color:#adc5df;letter-spacing:.12em;text-transform:uppercase;font-size:11px;margin-bottom:16px}.page-intro{padding:35px 0 29px;max-width:850px}.eyebrow{color:#a9cef5;text-transform:uppercase;letter-spacing:.19em;font-size:.78rem}.page-intro h1,.project-detail h1{font:500 clamp(2.6rem,6vw,4.7rem)/1.12 'Cinzel',serif;margin:16px 0}.page-intro p,.project-detail p{color:#c0d0e3;line-height:1.8;font-size:1.04rem}.silver-rule{height:1px;background:linear-gradient(90deg,transparent,#9cbce0,transparent);margin:25px 0}.project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.project-card{background:#0a1b32;border:1px solid #87a7cd65;overflow:hidden;border-radius:9px;box-shadow:0 16px 40px #0004;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}.project-card:hover{transform:translateY(-4px);border-color:#a7d8ff}.project-card:focus-within{outline:2px solid #b1d9ff}.project-card img{width:100%;aspect-ratio:16/9;object-fit:cover}.project-card .copy{padding:18px;display:flex;flex-direction:column;gap:9px;flex:1}.project-card h3{font:500 1.25rem 'Cinzel',serif;margin:0}.project-card p{color:#b2c5d9;line-height:1.6;font-size:.92rem;margin:0;flex:1}.project-card .tag,.detail-label{font-size:.69rem;letter-spacing:.17em;color:#93c2f3;text-transform:uppercase}.project-card a{border-top:1px solid #93b1d038;margin-top:8px;padding:12px 0 0;color:#e3efff}.filterbar{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 25px}.filterbar a{border:1px solid #99bcdd65;padding:9px 14px;border-radius:7px;font-size:.85rem}.filterbar a:hover,.filterbar a.active{background:#28527f}.project-detail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.07fr);gap:36px}.detail-art{width:100%;border:1px solid #86abd269;border-radius:9px;overflow:hidden;background:#061426}.detail-art img{width:100%;object-fit:cover;display:block}.detail-columns{display:grid;grid-template-columns:1fr 1fr;gap:12px}.detail-block{background:#0b1e35;border:1px solid #95bbdf3d;padding:17px;border-radius:7px}.detail-block h3{font:500 1rem 'Cinzel',serif;margin:0 0 8px;color:#e8f2ff}.detail-block p{font-size:.94rem;margin:0}.chips{display:flex;flex-wrap:wrap;gap:7px;margin:15px 0}.chips span{padding:7px 11px;background:#193a5e;border:1px solid #a3c4e14d;border-radius:5px;font-size:.83rem}.cta{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;margin:10px 12px 0 0;border:1px solid #bfd9f399;border-radius:6px;background:linear-gradient(#254b72,#102b4a);color:white}.cta:hover{background:#356892}.plain-panel{padding:23px;border:1px solid #92b9e052;border-radius:9px;background:#0a1d34bd;max-width:850px;line-height:1.8}.plain-panel p{color:#c1d1e4}.foot{max-width:1200px;margin:55px auto 0;padding:24px;border-top:1px solid #a5c4e44d;color:#92afca;font-size:.81rem}.footer-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}@media(max-width:820px){.site-header{align-items:start;flex-direction:column}.site-nav{gap:0}.site-nav a{padding:8px}.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.project-detail{grid-template-columns:1fr}}@media(max-width:540px){.project-grid,.detail-columns{grid-template-columns:1fr}.inner main{padding:28px 16px 0}.page-intro{padding-top:15px}}
+/* V9: matching panda heraldry across inner pages */
+.site-logo{display:inline-flex;align-items:center;gap:11px}
+.site-logo::before{content:"";width:34px;height:34px;flex:none;background:url("assets/panda-crest.png") center/cover no-repeat;border-radius:50%;border:1px solid #9cbbe080;box-shadow:0 0 16px #6bacff44}
+@media(max-width:540px){.site-logo::before{width:29px;height:29px}}
+
+/* V10: official user-supplied crest and runic identity */
+
+
+.site-logo::before{background:url("assets/zack-rune.png") center/contain no-repeat!important;border:none!important;border-radius:0!important;box-shadow:none!important;width:42px;height:42px;filter:drop-shadow(0 0 5px #51b7ff77)}
+.site-logo:hover::before{filter:drop-shadow(0 0 9px #82ceff)}
+@media(max-width:540px){.site-logo::before{width:32px;height:32px}}
+
+/* V13 — interactive polish, user-approved composition preserved */
+.scene-art{user-select:none;-webkit-user-drag:none}
+.scene{box-shadow:inset 0 0 0 1px #a8d2ff33}
+.zone{border-radius:4px;outline-offset:3px;transition:background .16s ease,box-shadow .18s ease,outline-color .18s ease}
+.zone:hover,.zone:focus-visible{background:radial-gradient(ellipse,#b3e2ff16 0%,#a3dcff0a 55%,transparent 75%);border-color:#c6e7ff9e;box-shadow:inset 0 0 1px 1px #d3eaff77,0 0 12px #3f9cff77,0 0 25px #3a9bfa30;outline:1px solid #d2efffaf}
+.zone:focus-visible{outline:2px solid #e1f4ff;outline-offset:4px}
+.zone:active{background:#a7d9ff2d;box-shadow:0 0 28px #6ac1ff8e}
+/* do not obscure the underlying labels while pointer focuses */
+.nav-hint{position:absolute;z-index:8;width:max-content;max-width:205px;padding:10px 13px;border:1px solid #b5dcff8a;border-radius:4px;background:linear-gradient(135deg,#06152af0,#102d4bf0);box-shadow:0 8px 28px #0009,0 0 18px #55aaff22;pointer-events:none;opacity:0;transform:translateY(6px);transition:opacity .17s,transform .17s}
+.nav-hint.visible{opacity:1;transform:translateY(0)}
+.nav-hint strong{display:block;color:#ecf5ff;font:600 12px Cinzel,serif;letter-spacing:.075em}
+.nav-hint span{display:block;color:#bed6ef;font-size:11px;margin-top:3px;line-height:1.35}
+.magic-pointer{position:absolute;z-index:2;left:-100px;top:-100px;width:220px;height:220px;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;mix-blend-mode:screen;background:radial-gradient(circle,#abdbff16,transparent 65%);opacity:.8;transition:opacity .2s}
+.still .magic-pointer{display:none}
+.is-departing .scene-art{filter:brightness(.9) saturate(1.12)}
+.is-departing .scene-shimmer{opacity:.5}
+.scene-art{transition:filter .28s ease}
+.inner main{animation:enter-chapter .5s ease both}
+@keyframes enter-chapter{from{opacity:.4;transform:translateY(11px)}to{opacity:1;transform:translateY(0)}}
+.project-card img{transition:transform .3s ease,filter .3s ease;transform-origin:center}
+.project-card:hover img,.project-card:focus-within img{transform:scale(1.035);filter:saturate(1.12)}
+.site-nav a:focus-visible,.site-logo:focus-visible,.project-card a:focus-visible,.cta:focus-visible{outline:2px solid #d5edff;outline-offset:2px}
+@media(max-width:1050px){.nav-hint{display:none}.magic-pointer{display:none}.zone:focus-visible{outline-offset:1px}}
+@media(prefers-reduced-motion:reduce){.inner main{animation:none}.project-card img,.scene-art{transition:none}}
+
+/* V14 — precise HTML typography layered over hand-painted world */
+.crisp-ui{position:absolute;inset:0;z-index:7;pointer-events:none;color:#f4f7ff;font-family:Georgia,'Times New Roman',serif}
+.crisp-ui a{pointer-events:auto}
+.crisp-brand{position:absolute;left:0;top:0;height:8.85%;width:29.5%;display:flex;gap:2.6%;align-items:center;padding:0 1.5% 0 2.5%;background:#07182ef5;border-bottom:1px solid #44678e;color:#f4f7ff}
+.crisp-brand img{height:83%;width:auto;aspect-ratio:1;object-fit:contain;mix-blend-mode:screen;filter:drop-shadow(0 0 5px #70bfff90)}
+.crisp-brand span{white-space:nowrap}.crisp-brand strong{display:block;font-weight:400;letter-spacing:.29em;font-size:clamp(14px,2.17vw,35px);line-height:1.3}.crisp-brand small{display:block;font-family:'DM Sans',sans-serif;letter-spacing:.10em;font-size:clamp(6px,.62vw,11px);color:#ccd8ed}
+.crisp-nav{position:absolute;left:29%;top:0;height:8.85%;width:51.6%;display:flex;align-items:stretch;background:#06152aec;border-bottom:1px solid #335474}
+.crisp-nav a{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.12em;border-left:1px solid #57779a60;color:#e9f1ff;font-size:clamp(15px,1.4vw,25px);font-family:Georgia,serif;text-shadow:0 1px 4px #010711;transition:background .18s,color .18s}
+.crisp-nav a span{font-size:clamp(9px,.95vw,17px)}.crisp-nav a:hover,.crisp-nav a:focus-visible{background:#163e66ee;color:white;box-shadow:inset 0 -3px #95ceff}
+.crisp-hero{position:absolute;left:11.1%;top:10.55%;width:28.0%;height:27.5%;padding:.3% 1.1% 1.2% .5%;background:linear-gradient(90deg,#1a4076c9 0%,#234e8489 72%,transparent 100%);text-shadow:0 2px 4px #06203d9c}
+.crisp-hero h1{font:400 clamp(23px,3.2vw,53px)/1.03 Georgia,'Times New Roman',serif;letter-spacing:.018em;margin:0 0 2.2%;text-transform:uppercase}
+.crisp-hero p{font-size:clamp(9px,1.02vw,17px);line-height:1.4;margin:0 0 3%}
+.crisp-action,.crisp-feature-action{display:inline-flex;align-items:center;justify-content:space-between;gap:1.1em;padding:2.5% 5%;border:1px solid #d2b785;background:#061830f4;box-shadow:0 2px 12px #03112488;color:#fff;font-size:clamp(9px,.98vw,16px);letter-spacing:.06em;white-space:nowrap;transition:background .18s,box-shadow .18s}
+.crisp-action:hover,.crisp-feature-action:hover{background:#1b4a79;box-shadow:0 0 20px #71b9ff91}
+.crisp-banner{position:absolute;transform:translate(-50%,-50%);width:14.5%;min-height:5.2%;border:1px solid #c3a36f;background:linear-gradient(180deg,#102f56 0%,#031329 100%);box-shadow:0 2px 0 #020b16,0 4px 18px #001224a6;clip-path:polygon(0 50%,9% 0,91% 0,100% 50%,91% 100%,9% 100%)}
+.crisp-banner a{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:45px;text-align:center;color:#f3f5fc;text-shadow:0 1px 3px #000;padding:5px 9%}
+.crisp-banner strong{font-size:clamp(9px,1.04vw,16px);font-weight:400;letter-spacing:.035em;white-space:nowrap}.crisp-banner small{font-size:clamp(7px,.67vw,12px);white-space:nowrap;margin-top:2px;color:#cddbea}
+.crisp-banner:hover{filter:drop-shadow(0 0 9px #6cc5ff);border-color:#d5efff}
+.crisp-citadel{left:42%;top:30.6%}.crisp-arena{left:36%;top:50.2%}.crisp-workshop{left:72%;top:38.9%}.crisp-hall{left:80.8%;top:57.6%;width:17.4%}.crisp-archives{left:92%;top:27.5%;width:14%}
+.crisp-feature{position:absolute;left:3.55%;top:74.6%;width:24%;height:23%;padding:1.15% .9%;background:linear-gradient(90deg,#06172cee 0%,#06172ce9 88%,#06172c10);text-shadow:0 1px 3px #000}
+.crisp-eyebrow{font-size:clamp(9px,.85vw,15px);letter-spacing:.075em}.crisp-feature h2{font-size:clamp(18px,2.65vw,43px);font-weight:400;line-height:1.08;margin:2% 0 2%}.crisp-feature p{font-size:clamp(8px,.96vw,16px);line-height:1.38;margin:0 0 3%}.crisp-feature-action{padding:2% 5%;font-size:clamp(9px,.89vw,15px)}
+.crisp-recents{position:absolute;left:55%;top:76%;width:43%;display:flex;justify-content:space-between;align-items:center;font-size:clamp(11px,.99vw,17px);background:#071a2cd9;padding:5px 8px}.crisp-recents a{font-size:.9em}
+.crisp-ui a:focus-visible{outline:2px solid #b6deff;outline-offset:3px}
+/* Hit areas inherited from V13 remain on the unoverlaid images */
+.zone{z-index:6}.crisp-ui{z-index:7}
+@media(max-width:1050px){.crisp-brand strong{font-size:21px}.crisp-hero h1{font-size:36px}.crisp-hero p{font-size:12px}.crisp-banner strong{font-size:12px}.crisp-banner small{font-size:8px}.crisp-feature h2{font-size:29px}.crisp-feature p{font-size:11px}}
+
+/* V15 — only the live interface owns text and interactions */
+.crisp-brand,.crisp-nav{background:#061429!important;box-shadow:0 3px 18px #010816b8}
+.crisp-nav{left:29.1%;width:52%;border-bottom:1px solid #7d9bbb73}
+.crisp-hero{background:linear-gradient(90deg,#214b80 0%,#214b80f9 73%,#214b80eb 90%,#214b8000 100%)!important;left:10.9%;width:29.7%;top:10.2%;height:27.9%;padding:1% 1.6% 1% .8%;isolation:isolate}
+.crisp-hero::before{content:'';position:absolute;inset:-3% -1% -3% -1%;background:linear-gradient(90deg,#244e87 0%,#27568ce8 70%,#27568c00 100%);z-index:-1;pointer-events:none}
+.crisp-banner{width:16%;min-height:6.3%;background:#05162f!important;outline:7px solid #07162b;outline-offset:-2px;clip-path:polygon(0 50%,9% 0,91% 0,100% 50%,91% 100%,9% 100%)}
+.crisp-banner a{position:relative;z-index:1;min-height:56px;width:100%;transition:background .18s,color .18s,filter .18s;text-decoration:none}
+.crisp-banner:hover,.crisp-banner:focus-within{border-color:#e2f4ff;filter:drop-shadow(0 0 14px #79bcff);background:#143861!important;box-shadow:0 0 25px #62b4ff8c;transform:translate(-50%,-50%) scale(1.055)}
+.crisp-banner:focus-within{outline:2px solid #e7f5ff;outline-offset:5px}
+.crisp-citadel{left:42%;top:30.6%}
+.crisp-arena{left:36%;top:50.2%}
+.crisp-workshop{left:72%;top:38.9%}
+.crisp-hall{left:80.8%;top:57.6%;width:19%}
+.crisp-archives{left:92%;top:27.5%;width:15.3%}
+.crisp-feature{background:#06172c!important;left:3.35%;width:24.9%;top:74%;height:24%;padding:1.6% 1.15%}
+.crisp-recents{background:#06172c!important;min-height:3.5%;left:54.4%;width:44%}
+.crisp-ui .crisp-action:hover,.crisp-ui .crisp-feature-action:hover{filter:drop-shadow(0 0 7px #95d5ff);border-color:#cbeaff;background:#1b4772}
+.zone.z-home,.zone.z-realm,.zone.z-citadel-nav,.zone.z-arena-nav,.zone.z-workshop-nav,.zone.z-hall-nav,
+.zone.z-citadel,.zone.z-arena,.zone.z-workshop,.zone.z-hall,.zone.z-archives,.zone.z-start,.zone.z-featured,.zone.z-latest{pointer-events:none!important;visibility:hidden!important}
+@media(prefers-reduced-motion:reduce){.crisp-banner,.crisp-banner a{transition:none}}
+
+/* V16: screenshot-driven refinement: avoid crude opaque slabs */
+.crisp-hero{left:10.9%;top:10.6%;width:26.7%;height:27.5%;padding:.5% 1% .5% .75%;background:linear-gradient(90deg,#1d4981ed 0%,#24558cba 65%,#2c609250 88%,transparent 100%)!important;box-shadow:none!important;overflow:visible}
+.crisp-hero::before{display:none!important}
+.crisp-hero h1{line-height:1.04;text-shadow:0 2px 4px #092342c7}
+.crisp-hero p{max-width:95%;line-height:1.35}
+.crisp-banner{width:15%;min-height:5.0%;border:1px solid #bfd4f2!important;outline:none!important;background:linear-gradient(180deg,#0c2f57ef,#061b34f6)!important;clip-path:polygon(0 50%,7% 0,93% 0,100% 50%,93% 100%,7% 100%);box-shadow:0 3px 13px #0515299c,inset 0 0 0 1px #9fc6ef44!important;transition:transform .18s ease,filter .18s ease,border-color .18s ease!important}
+.crisp-banner a{min-height:48px!important;padding:6px 11%!important}
+.crisp-banner:hover,.crisp-banner:focus-within{background:linear-gradient(180deg,#184e83f2,#0a2d57f9)!important;transform:translate(-50%,-50%) scale(1.045)!important;filter:drop-shadow(0 0 8px #77baff8c)!important;box-shadow:0 4px 18px #04162b,inset 0 0 0 1px #bddbff7a!important}
+.crisp-citadel{left:42%;top:30.6%}.crisp-arena{left:36%;top:50.2%}.crisp-workshop{left:72%;top:38.9%}.crisp-hall{left:80.8%;top:57.6%;width:18%}.crisp-archives{left:92%;top:27.5%;width:15%}
+.crisp-feature{left:3.55%;top:74.6%;width:24%;height:23%;padding:1.15% .9%;background:linear-gradient(90deg,#06172cf7 0%,#06172ce9 78%,#06172c00 100%)!important}
+.crisp-recents{background:linear-gradient(90deg,#071a2cf6,#071a2cc7)!important;left:55%;width:43%}
+.crisp-brand img{box-shadow:none!important}.crisp-nav a:hover{background:#205486}
+
+/* V17: functional project carousel — replaces painted decorative dots */
+.featured-art-panel{position:absolute;z-index:8;left:28.2%;top:75.1%;width:25.1%;height:20.4%;overflow:hidden;border:1px solid #9bbfe59c;background:linear-gradient(135deg,#061c37,#163d62);box-shadow:0 7px 22px #020a18a8;pointer-events:none}
+.featured-art-panel img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.95) brightness(.9)}
+.feature-art-note{position:absolute;bottom:4%;right:3%;padding:4px 7px;background:#061526c9;color:#c3d9f0;font:600 9px 'DM Sans',sans-serif;letter-spacing:.12em}
+.featured-dots{position:absolute;z-index:10;left:34.2%;top:95.45%;height:2.3%;width:13%;display:flex;align-items:center;justify-content:center;gap:12px;background:#061325ef;border-radius:20px;pointer-events:auto}
+.featured-dots button{appearance:none;border:1px solid #8bb2e1;background:#5a779a;width:11px;height:11px;border-radius:50%;padding:0;cursor:pointer;box-shadow:0 0 0 4px #061325a0;transition:transform .18s,background .18s,box-shadow .18s}
+.featured-dots button.active,.featured-dots button[aria-pressed=true]{background:#ffd38a;border-color:#ffebbc;box-shadow:0 0 10px #ffc76b95}
+.featured-dots button:hover{transform:scale(1.25);background:#b1dfff}
+.featured-dots button:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.crisp-feature{background:#06172cf5!important}
+.crisp-feature h2{font-size:clamp(16px,2.15vw,34px);line-height:1.04;overflow-wrap:anywhere}
+.crisp-feature p{font-size:clamp(9px,.9vw,15px);line-height:1.48}
+@media(prefers-reduced-motion:reduce){.featured-dots button{transition:none}}
+
+/* V18: source artwork landmark plaques removed. Only live, accessible banners are interactive. */
+.crisp-banner{border:1px solid #9cbbe2!important;outline:none!important;background:linear-gradient(180deg,#143c6be8,#061a35f5)!important;box-shadow:0 3px 15px #03102799,inset 0 1px 0 #e4f2ff41;clip-path:polygon(0 50%,8% 0,92% 0,100% 50%,92% 100%,8% 100%)}
+.crisp-banner:hover,.crisp-banner:focus-within{transform:translate(-50%,-50%) scale(1.055);background:linear-gradient(180deg,#1d558bcf,#0a2756f5)!important;filter:drop-shadow(0 0 11px #72bdff);box-shadow:0 0 20px #7fc5ff5c}
+.crisp-hero{background:linear-gradient(90deg,#173e71f4 0%,#28558bce 68%,transparent 100%)!important}
+.crisp-hero::before{background:linear-gradient(90deg,#173e71e0 0%,#28558bad 62%,transparent 100%)!important}
+
+/* V19: clean background, all UI live. Environment contains NO painted text or controls. */
+.scene:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#05132636 0%,transparent 19%,transparent 64%,#051022b8 77%,#051022fa 100%);z-index:1;pointer-events:none}
+.crisp-ui{position:absolute;inset:0;z-index:7;pointer-events:none}
+.crisp-ui a,.crisp-ui button,.featured-dots{pointer-events:auto}
+.crisp-hero{left:10.5%;top:11%;width:30.5%;height:auto;min-height:27%;padding:1.2% 2% 1.5% 1%;background:linear-gradient(90deg,#082249b8,#1039686e 67%,transparent)!important;box-shadow:none!important}
+.crisp-hero::before{display:none!important}
+.crisp-banner{background:linear-gradient(180deg,#0b2b50,#06172d)!important;border:1px solid #bad8f4!important;box-shadow:0 3px 18px #03102699,inset 0 0 0 2px #68a9df47!important}
+.crisp-banner a:hover,.crisp-banner a:focus-visible{color:#fff}
+.crisp-banner:hover,.crisp-banner:focus-within{background:linear-gradient(180deg,#204e7a,#0c3163)!important;filter:drop-shadow(0 0 15px #7ad0ffb8)!important}
+.crisp-brand{background:#061329ed!important}.crisp-nav{background:#061329ed!important}
+.crisp-feature{top:74.9%;left:2.9%;width:24%;height:23%;background:#061326f2!important;border:1px solid #aec8e087;border-radius:4px;padding:1.1% 1.25%}
+.featured-art-panel{left:27.1%;top:75%;width:26.4%;height:20.8%}
+.featured-dots{left:33.1%;top:96.1%;width:14%;}
+.crisp-recents{left:54.7%;top:75%;height:3.5%;width:43.2%;background:linear-gradient(90deg,#061629f5,#061629d9)!important}
+.live-recent-cards{position:absolute;z-index:9;left:54.9%;top:79.2%;width:43%;height:18.2%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.05%;pointer-events:auto}
+.live-recent-cards a{overflow:hidden;border:1px solid #acbfdd9c;background:#06172de8;display:flex;flex-direction:column;box-shadow:0 4px 13px #0008;transition:transform .18s,border-color .18s,box-shadow .18s;min-width:0}
+.live-recent-cards a:hover,.live-recent-cards a:focus-visible{transform:translateY(-5px);border-color:#d9ecff;box-shadow:0 0 20px #75b8ff8a;outline:none}
+.live-recent-cards img{display:block;width:100%;height:66%;object-fit:cover}
+.live-recent-cards strong{font-family:'Cinzel',serif;font-size:clamp(8px,0.85vw,14px);color:#e9f5ff;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;padding:6px 7px 0}
+.live-recent-cards small{font:500 clamp(6px,.65vw,10px) 'DM Sans',sans-serif;color:#a8caed;padding:3px 7px}
+.cape-rune{position:absolute;z-index:2;pointer-events:none;left:9.2%;top:51.3%;width:4.7%;height:9%;transform:rotate(-15deg);opacity:.85;mix-blend-mode:screen;filter:drop-shadow(0 0 5px #3ec2ff)}
+.cape-rune img{width:100%;height:100%;object-fit:contain}
+@media(prefers-reduced-motion:reduce){.live-recent-cards a{transition:none}}
+
+/* V21 identity integration */
+.banner-rune{position:absolute;z-index:2;pointer-events:none;left:2.65%;top:31.9%;width:5.1%;height:12%;opacity:.9;mix-blend-mode:screen;filter:drop-shadow(0 0 7px #58c8ff) drop-shadow(0 0 14px #2f8fff66);transform:rotate(-2deg)}
+.banner-rune img{width:100%;height:100%;object-fit:contain}
+.crisp-brand img{filter:drop-shadow(0 0 8px #73c4ffb3) drop-shadow(0 0 20px #2f8fff4d)}
+.crisp-brand strong{ text-shadow:0 0 1px rgba(255,255,255,.2)}
+.cape-rune{opacity:.92;filter:drop-shadow(0 0 7px #5bc6ff) drop-shadow(0 0 14px #2f8fff66)}
+@media(max-width:700px){.banner-rune{left:2.3%;top:34.6%;width:6.5%;height:13%}}
+
+/* V22: the distinctive V18 sapphire-and-silver color language and true transparent crest */
+.crisp-brand img{mix-blend-mode:normal;object-fit:contain;filter:drop-shadow(0 0 6px #63bdffe0) drop-shadow(0 0 12px #3d9fff66)}
+/* Physical cape geometry, not a large screen-aligned stamp. */
+.cape-rune{left:10%;top:58%;width:3.2%;height:6%;transform:rotate(-24deg) skewY(4deg);opacity:.94;mix-blend-mode:screen;filter:drop-shadow(0 0 5px #7adbff)}
+/* Use existing unmodified rune, crisp cyan/silver and aligned to cloth. */
+.banner-rune{left:4.0%;top:34.8%;width:2.7%;height:7%;transform:rotate(1deg);opacity:.96;mix-blend-mode:screen;filter:drop-shadow(0 0 5px #7fceff)}
+/* Keep the background visible behind the introduction while preserving sharp type. */
+.crisp-hero{background:linear-gradient(90deg,#0b254aaf,#143b6375 67%,transparent 100%)!important;backdrop-filter:none!important;box-shadow:none!important;}
+.crisp-banner{background:linear-gradient(180deg,#103767e8,#071b38f2)!important;border:1px solid #a8cce7!important;box-shadow:0 0 0 1px #071f39,0 4px 16px #00142999!important;}
+.crisp-banner:hover,.crisp-banner:focus-within{background:linear-gradient(180deg,#2465a0f5,#0b3160fa)!important;filter:drop-shadow(0 0 9px #73c9ff)!important;}
+@media(max-width:700px){.banner-rune{left:4.0%;top:34.8%;width:2.7%;height:7%}}
+
+/* V23 authentic crest integration and V18 sapphire color pass */
+.crisp-brand{background:#06152cea!important}
+.crisp-brand img{mix-blend-mode:screen!important;filter:drop-shadow(0 0 8px #6ac5ffb0)!important}
+.banner-rune{left:4.2%!important;top:29.9%!important;width:3.2%!important;height:11%!important;transform:rotate(3deg)!important;mix-blend-mode:screen!important;opacity:.98!important;filter:drop-shadow(0 0 6px #7fd3ff)!important}
+.cape-rune{left:8.3%!important;top:60.1%!important;width:4.4%!important;height:8.3%!important;transform:rotate(-29deg) skewY(-7deg)!important;opacity:.94!important;mix-blend-mode:screen!important;filter:drop-shadow(0 0 3px #80ceff)!important}
+.crisp-hero{background:linear-gradient(90deg,rgba(6,25,50,.42),rgba(9,39,78,.20) 76%,transparent)!important}
+
+/* V24: genuine, isolated original rune; no eyes or outer ring. Fixed-location emblems. */
+.crisp-brand img{mix-blend-mode:normal!important;filter:drop-shadow(0 0 8px #78c9ff)!important}
+.banner-rune{left:4.65%!important;top:29.5%!important;width:2.6%!important;height:10%!important;transform:rotate(-2deg)!important;filter:drop-shadow(0 0 5px #68bfff)!important}
+.cape-rune{left:9.1%!important;top:59.3%!important;width:3.7%!important;height:7.4%!important;transform:rotate(-25deg) skewY(-8deg)!important;filter:drop-shadow(0 0 4px #78c9ff)!important}
+
+/* V33: Secondary destinations, matched across all pages */
+.home-utility-nav{position:absolute;z-index:8;left:60%;top:9.7%;display:flex;gap:10px;justify-content:flex-end;white-space:nowrap}
+.home-utility-nav a,.realm-utility-links a{font-family:'Cinzel',Georgia,serif;letter-spacing:.08em;color:#e6f3ff;background:linear-gradient(180deg,rgba(17,46,81,.93),rgba(5,20,42,.94));border:1px solid #c4d8f2a1;padding:8px 13px;border-radius:4px;box-shadow:inset 0 1px #eff7ff25,0 5px 16px #0005;font-size:clamp(10px,.85vw,14px);transition:border-color .2s,background .2s,box-shadow .2s}
+.home-utility-nav a:hover,.home-utility-nav a:focus-visible,.realm-utility-links a:hover,.realm-utility-links a:focus-visible{background:#244e7c;border-color:#eff8ff;box-shadow:0 0 16px #81bfff6b}
+.archive-doors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:22px 0}
+.archive-doors a{display:flex;flex-direction:column;gap:10px;padding:22px;border:1px solid #b8d5ed91;background:rgba(17,52,91,.72);transition:transform .2s,background .2s}
+.archive-doors a:hover{transform:translateY(-3px);background:rgba(37,77,121,.93)}
+.archive-doors strong{font-family:'Cinzel',serif}.archive-doors span{color:#cfdded;font-size:.87rem}
+@media(max-width:900px){.home-utility-nav{display:none}}
+@media(max-width:620px){.archive-doors{grid-template-columns:1fr}}
+
+/* V34 — consistent secondary destinations and focused Archive/About/Contact pages. */
+.realm-utility-links,.home-utility-nav.archive-subnav{display:flex;align-items:center;justify-content:center;gap:0;width:max-content;max-width:calc(100% - 32px);padding:4px!important;border:1px solid rgba(179,211,245,.62);background:linear-gradient(180deg,rgba(14,38,68,.94),rgba(5,21,43,.94));box-shadow:0 6px 22px rgba(0,0,0,.3);border-radius:6px;white-space:nowrap}
+.realm-utility-links{margin:12px auto 4px;position:relative;z-index:4}
+.home-utility-nav.archive-subnav{position:absolute;left:auto;right:3%;top:10%;z-index:9}
+.realm-utility-links a,.home-utility-nav.archive-subnav a{border:0!important;border-right:1px solid rgba(174,208,244,.22)!important;box-shadow:none!important;background:transparent!important;padding:8px 17px!important;font-size:clamp(10px,.8vw,13px);border-radius:3px;text-decoration:none}
+.realm-utility-links a:last-child,.home-utility-nav.archive-subnav a:last-child{border-right:0!important}
+.realm-utility-links a:hover,.realm-utility-links a[aria-current=page],.home-utility-nav.archive-subnav a:hover{background:rgba(73,126,181,.32)!important;color:#fff}
+.realm-interior .profile-portal,.realm-interior .profile-sheet{width:min(100%,1050px);margin:30px auto 70px;display:grid;gap:28px;align-items:stretch}
+.realm-interior .profile-portal{grid-template-columns: minmax(0,.95fr) minmax(0,1.05fr)}
+.realm-interior .profile-portal-copy,.realm-interior .profile-sheet-main,.realm-interior .profile-sheet-side{border:1px solid rgba(176,211,247,.55);background:linear-gradient(155deg,rgba(6,24,47,.92),rgba(6,20,38,.89));box-shadow:0 18px 40px #0005;padding:clamp(25px,3vw,45px);backdrop-filter:blur(7px)}
+.realm-interior .profile-portal h2,.realm-interior .profile-sheet h2{font:normal clamp(1.7rem,2.5vw,2.6rem) Georgia,serif;color:#f5faff;margin:14px 0 20px}
+.realm-interior .profile-portal p,.realm-interior .profile-sheet p{line-height:1.8;color:#d5e4f5;max-width:58ch}
+.realm-interior .profile-paths{display:grid;grid-template-rows:1fr 1fr;gap:16px}
+.realm-interior .profile-path{display:flex;flex-direction:column;gap:10px;padding:24px 30px;border:1px solid #a4c9ee9e;background:linear-gradient(115deg,rgba(20,58,98,.95),rgba(6,27,54,.92));text-decoration:none;transition:transform .18s,border-color .18s,background .18s}
+.realm-interior .profile-path:hover,.realm-interior .profile-path:focus-visible{transform:translateY(-2px);border-color:#e2efff;background:#244b78}
+.realm-interior .profile-path strong{font:normal clamp(1.45rem,2vw,2rem) Georgia,serif;color:white}
+.realm-interior .profile-path span:not(.path-number):not(.path-action){color:#d7e6f5}
+.realm-interior .path-number{font-size:.7rem;letter-spacing:.18em;color:#9ec6e9}
+.realm-interior .path-action{margin-top:auto;color:#e5f4ff;font-size:.84rem;letter-spacing:.04em}
+.realm-interior .profile-sheet{grid-template-columns:minmax(0,1.55fr) minmax(260px,.85fr)}
+.realm-interior .profile-sheet-side{border-left:3px solid #a5c7eb}
+.realm-interior .profile-fact{display:flex;flex-direction:column;gap:8px;padding:18px 0;border-bottom:1px solid #aac9e746}
+.realm-interior .profile-fact small{font-size:.69rem;letter-spacing:.14em;color:#9dc6ec}
+.realm-interior .profile-fact strong{font-size:1rem;color:white;line-height:1.45}
+.realm-interior .profile-fact span{font-size:.9rem;color:#d3e3f5;line-height:1.5}
+.realm-interior .profile-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.realm-interior .alt-cta{background:rgba(11,42,74,.85)}
+.realm-interior .quiet-return{display:inline-block;margin-top:24px;color:#d9ebff}
+@media(max-width:920px){.home-utility-nav.archive-subnav{display:none}.realm-interior .profile-portal,.realm-interior .profile-sheet{grid-template-columns:1fr}}
+@media(max-width:560px){.realm-utility-links{gap:0}.realm-utility-links a{padding:9px 10px!important;font-size:10px}.realm-interior .profile-portal-copy,.realm-interior .profile-sheet-main,.realm-interior .profile-sheet-side{padding:24px}}
+
+/* V36: introductory panel sits directly under the shared homepage header. */
+body.home .crisp-hero{top:8.85%;min-height:29%;height:auto;padding-top:1.25%;padding-bottom:1.2%;}
+body.home .crisp-hero .hero-destinations{font-size:clamp(9px,.91vw,15px);line-height:1.43;margin-top:2.2%;max-width:100%;}
+body.home .crisp-hero .hero-destinations strong{font-weight:600;color:#e9f4ff;}
+
+/* V37: The landscape and location links take center stage; no project shelf on homepage. */
+body.home .scene:before{background:linear-gradient(180deg,rgba(5,19,38,.20) 0%,transparent 20%,transparent 78%,rgba(5,16,34,.26) 100%)!important;}
+body.home .crisp-hero{top:9.3%;min-height:0;height:auto;padding-top:1.5%;padding-bottom:1.6%;}
+body.home .crisp-hero .hero-destinations{font-size:clamp(10px,1.06vw,17px);line-height:1.55;margin-top:4.5%;max-width:94%;}
+body.home .crisp-banner{transition:transform .18s,filter .18s;}
+
+/* V38 — single-screen homepage; compact intro clears the Citadel marker. */
+@media (min-width:1051px) {
+  body.home { height:100dvh; overflow:hidden; }
+  body.home .scene-scroll { width:100%; height:100dvh; overflow:hidden; }
+  body.home .scene { width:100%; min-width:0; height:100dvh; aspect-ratio:auto; }
+  body.home .scene-art { width:100%; height:100%; object-fit:fill; }
+  body.home .home-bottom { display:none; }
+}
+body.home .crisp-hero {
+  left:10.5%; top:9.2%; width:27%; height:19.6%; min-height:0;
+  padding:.3% 1.2% .4% .7%; overflow:hidden;
+}
+body.home .crisp-hero h1 {
+  font-size:clamp(21px,2.65vw,42px); line-height:1.00; margin-bottom:1.5%;
+}
+body.home .crisp-hero p {
+  font-size:clamp(9px,.84vw,13px); line-height:1.24; margin:0 0 1.3%;
+}
+body.home .crisp-hero .hero-destinations {
+  font-size:clamp(9px,.84vw,13px); line-height:1.25; margin-top:1.5%; max-width:96%;
+}
+@media (max-width:1050px) {
+  body.home .crisp-hero { height:20%; }
+}
+
+/* V38 — single-screen homepage; compact intro clears the Citadel marker. */
+@media (min-width:1051px) {
+  body.home { height:100dvh; overflow:hidden; }
+  body.home .scene-scroll { width:100%; height:100dvh; overflow:hidden; }
+  body.home .scene { width:100%; min-width:0; height:100dvh; aspect-ratio:auto; }
+  body.home .scene-art { width:100%; height:100%; object-fit:fill; }
+  body.home .home-bottom { display:none; }
+}
+body.home .crisp-hero {left:10.5%;top:9.2%;width:27%;height:19.6%;min-height:0;padding:.3% 1.2% .4% .7%;overflow:hidden;}
+body.home .crisp-hero h1 {font-size:clamp(21px,2.65vw,42px);line-height:1.00;margin-bottom:1.5%;}
+body.home .crisp-hero p {font-size:clamp(9px,.84vw,13px);line-height:1.24;margin:0 0 1.3%;}
+body.home .crisp-hero .hero-destinations {font-size:clamp(9px,.84vw,13px);line-height:1.25;margin-top:1.5%;max-width:96%;}
+@media (max-width:1050px) {body.home .crisp-hero {height:20%;}}
+
+/* V39: position introduction in the lower-left foreground; richer navy glass. */
+body.home .crisp-hero {
+  left:3.2%; top:auto; bottom:5.4%; width:30%; height:auto; min-height:0;
+  padding:1.15% 1.5% 1.15% 1.25%; overflow:visible;
+  background:linear-gradient(110deg,rgba(4,16,37,.96),rgba(7,29,57,.92))!important;
+  border:1px solid rgba(161,195,233,.42); border-radius:9px;
+  box-shadow:0 12px 28px rgba(0,8,25,.48)!important;
+  text-shadow:0 2px 4px rgba(0,0,0,.65);
+}
+body.home .crisp-hero h1 {font-size:clamp(20px,2.3vw,37px);line-height:1.02;margin:0 0 2.2%;}
+body.home .crisp-hero p {font-size:clamp(10px,.91vw,14px);line-height:1.35;margin:0 0 2%;}
+body.home .crisp-hero .hero-destinations {font-size:clamp(10px,.91vw,14px);line-height:1.35;margin:0;}
+@media(max-width:1050px){body.home .crisp-hero {left:3.2%;bottom:5.4%;width:32%;height:auto;}}
+
+/* V42 — character-profile doorway above the panda, away from realm banners. */
+body.home .behind-crest{
+ position:absolute;z-index:11;left:4%;top:30%;width:21%;min-height:11%;
+ display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:clamp(3px,.42vh,7px);
+ padding:clamp(10px,1.1vw,20px) clamp(12px,1.25vw,24px);
+ color:#f0f7ff;background:linear-gradient(115deg,rgba(5,20,42,.95),rgba(9,37,72,.90));
+ border:1px solid rgba(178,211,245,.72);border-radius:7px;
+ box-shadow:inset 0 1px rgba(226,245,255,.16),0 12px 25px rgba(0,8,27,.45);
+ text-shadow:0 2px 4px #0009;transition:background .2s,border-color .2s,box-shadow .2s,transform .2s;
+}
+body.home .behind-crest:hover,body.home .behind-crest:focus-visible{background:linear-gradient(115deg,rgba(18,55,98,.97),rgba(10,44,85,.96));border-color:#e3f3ff;box-shadow:0 0 18px #64b5ff6b,0 12px 25px #0008;transform:translateY(-2px);outline-offset:3px;}
+body.home .behind-crest-eyebrow{font:600 clamp(8px,.69vw,11px) 'DM Sans',sans-serif;letter-spacing:.2em;color:#a8cdeb;}
+body.home .behind-crest strong{font:500 clamp(16px,1.63vw,28px) 'Cinzel',Georgia,serif;line-height:1.12;}
+body.home .behind-crest-action{font:500 clamp(10px,.89vw,14px) 'DM Sans',sans-serif;color:#bddcf7;}
+@media(max-width:1050px){body.home .behind-crest{left:3.5%;width:23%;top:30%;}}
+
+/* V43: Behind the Crest is the exact same heraldic plaque treatment as each realm destination. */
+body.home .crisp-behind-crest{left:15.3%;top:34%;width:16.2%;min-height:7.1%;z-index:11;}
+body.home .crisp-behind-crest strong{font-size:clamp(10px,1.0vw,16px)}
+@media(max-width:1050px){body.home .crisp-behind-crest{left:15.3%;top:34%;width:16.2%}}
+
+/* V176 — Home: purposeful introductory copy in the lower-left, no floating controls. */
+body.home .home-top,body.home .mobile-menu{display:none!important}
+body.home .crisp-hero.home-welcome{
+ left:2.6%;top:67%;width:29%;height:auto;min-height:0;
+ padding:1.15% 1.4% 1.35%;
+ background:linear-gradient(100deg,rgba(5,22,45,.94),rgba(10,36,69,.84) 76%,rgba(10,36,69,.32))!important;
+ border-left:2px solid rgba(192,220,248,.75);
+ border-radius:2px;box-shadow:0 14px 36px rgba(0,10,29,.26)!important;
+}
+body.home .crisp-hero.home-welcome h1{font-size:clamp(19px,2.05vw,32px);line-height:1.14;letter-spacing:.055em;margin:0 0 12px}
+body.home .crisp-hero.home-welcome p{font-size:clamp(11px,.97vw,16px);line-height:1.53;max-width:100%;margin:0 0 9px}
+body.home .crisp-hero.home-welcome p:last-child{margin-bottom:0}
+@media(max-width:1050px){body.home .crisp-hero.home-welcome h1{font-size:25px}body.home .crisp-hero.home-welcome p{font-size:12px}}
+
+
+/* V178: compact home welcome panel and homepage-only cursor motes. */
+body.home .crisp-hero.home-welcome{
+  width:25%;top:70%;padding:.72% 1.05% .82%;
+  background:linear-gradient(105deg,rgba(5,22,45,.89),rgba(9,33,62,.77) 78%,rgba(9,33,62,.28))!important;
+  box-shadow:0 10px 23px rgba(0,10,29,.22)!important;
+}
+body.home .crisp-hero.home-welcome h1{font-size:clamp(17px,1.65vw,26px);margin:0 0 7px}
+body.home .crisp-hero.home-welcome p{font-size:clamp(11px,.83vw,14px);line-height:1.38;margin:0 0 5px}
+body.home .home-cursor-motes{position:fixed;inset:0;width:100vw;height:100vh;z-index:40;pointer-events:none;contain:strict}
+@media(max-width:760px){body.home .crisp-hero.home-welcome{width:30%;top:68%;padding:1.1% 1.4%}body.home .crisp-hero.home-welcome h1{font-size:clamp(13px,2vw,19px)}body.home .crisp-hero.home-welcome p{font-size:clamp(10px,1.4vw,12px)}}
+@media(prefers-reduced-motion:reduce){body.home .home-cursor-motes{display:none!important}}
+
+body.home .magic-pointer{display:none!important}
+
+/* V179 — legible, low-profile introduction and bright cursor motes. */
+body.home .crisp-hero.home-welcome{
+  width:35%;top:72%;height:auto;min-height:0;
+  padding:.65% 1.15% .7%;
+}
+body.home .crisp-hero.home-welcome h1{
+  font-size:clamp(23px,2vw,31px);line-height:1.12;margin:0 0 7px;
+}
+body.home .crisp-hero.home-welcome p{
+  font-size:clamp(15px,1.08vw,18px);line-height:1.32;margin:0 0 5px;
+}
+@media(max-width:1050px){
+  body.home .crisp-hero.home-welcome{width:39%;top:72%}
+  body.home .crisp-hero.home-welcome h1{font-size:24px}
+  body.home .crisp-hero.home-welcome p{font-size:15px}
+}
+@media(max-width:760px){
+  body.home .crisp-hero.home-welcome{width:43%;top:72%;padding:1% 1.3%}
+  body.home .crisp-hero.home-welcome h1{font-size:21px}
+  body.home .crisp-hero.home-welcome p{font-size:14px;line-height:1.25}
+}
+
+
+/* V182 — fast fantasy-travel fade, homepage links only. */
+body.home .home-travel-veil{position:fixed;inset:0;z-index:1000;pointer-events:none;background:#031123;opacity:0;transition:opacity 240ms ease-in}
+body.home.home-travel-departing .home-travel-veil{opacity:1;pointer-events:auto}
+@media(prefers-reduced-motion:reduce){body.home .home-travel-veil{display:none}}
+
+/* V184 global page-departure veil; 140ms vs previous 240ms homepage-only transition. */
+.site-travel-veil{position:fixed;inset:0;z-index:2147483647;pointer-events:none;background:#031123;opacity:0;transition:opacity 140ms ease-in}
+.site-travel-departing .site-travel-veil{opacity:1;pointer-events:auto}
+@media(prefers-reduced-motion:reduce){.site-travel-veil{display:none!important}}

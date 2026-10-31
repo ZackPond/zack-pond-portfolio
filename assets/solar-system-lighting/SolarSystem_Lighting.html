@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Solar System — Lighting (Gouraud/Phong)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    html, body { height: 100%; margin: 0; background: #0b0f1a; color:#c7d2fe; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    #wrap { height: 100%; display: grid; place-items: center; }
+    #panel { position: fixed; top: 10px; left: 10px; right: 10px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; z-index:2; }
+    #panel button { background:#1f2937; color:#e5e7eb; border:1px solid #374151; border-radius:8px; padding:8px 12px; cursor:pointer; }
+    #panel .hint { font-size: 12px; opacity: .8; }
+    canvas { width: min(900px, 98vw); height: auto; max-height: calc(100vh - 84px); aspect-ratio: 3 / 2; border: 1px solid #162033; background: #000; display:block; }
+  </style>
+</head>
+<body>
+  <div id="panel">
+    <button id="toggle">Shading: Phong (click to toggle)</button>
+    <span class="hint">Sun = point light (orange). Attenuation 1/(a + b·d + c·d²). Orbits are subtle & behind planets.</span>
+  </div>
+  <div id="wrap" style="padding-top:40px;box-sizing:border-box">
+    <canvas id="gl-canvas" width="900" height="600">
+      Oops ... your browser doesn't support the HTML5 canvas element
+    </canvas>
+  </div>
+
+  <!-- ===== Gouraud (per-vertex lighting) ===== -->
+  <script id="gouraud-vert" type="x-shader/x-vertex">
+  attribute vec3 vPosition;
+  attribute vec3 vNormal;
+
+  uniform mat4 uModel;
+  uniform mat4 uView;
+  uniform mat4 uProj;
+  uniform mat3 uNormalMat;
+
+  uniform vec3 uLightPos;    // world-space sun position
+  uniform vec3 uViewPos;     // world-space camera position
+  uniform vec3 uLightColor;  // orange
+
+  uniform vec3 uMatAmbient;
+  uniform vec3 uMatDiffuse;
+  uniform vec3 uMatSpecular;
+  uniform float uShininess;
+
+  uniform float uA; // const
+  uniform float uB; // linear
+  uniform float uC; // quad
+
+  uniform bool uIsEarth; // apply blue-green gradient only to Earth
+
+  varying vec3 fColor;
+
+  void main() {
+    vec3 worldPos = vec3(uModel * vec4(vPosition, 1.0));
+    vec3 N = normalize(uNormalMat * vNormal);
+    vec3 L = normalize(uLightPos - worldPos);
+    vec3 V = normalize(uViewPos - worldPos);
+    vec3 R = reflect(-L, N);
+
+    float d = length(uLightPos - worldPos);
+    float atten = 1.0 / max(uA + uB*d + uC*d*d, 0.0001);
+
+    vec3 ambient = uMatAmbient;
+    float NdotL = max(dot(N,L), 0.0);
+    vec3 diffuse = NdotL * (uMatDiffuse * uLightColor);
+
+    float spec = 0.0;
+    if(NdotL > 0.0){
+      spec = pow(max(dot(R,V), 0.0), uShininess);
+    }
+    vec3 specular = spec * (uMatSpecular * uLightColor);
+
+    vec3 color = ambient + atten * (diffuse + specular);
+
+    // Earth-only blue->green gradient by latitude (N.y)
+    if (uIsEarth) {
+      vec3 gradient = mix(vec3(0.10, 0.50, 0.90),  // blue
+                          vec3(0.00, 0.70, 0.20),  // green
+                          clamp((N.y + 1.0) * 0.5, 0.0, 1.0));
+      color *= gradient;
+    }
+
+    fColor = color;
+    gl_Position = uProj * uView * vec4(worldPos, 1.0);
+  }
+  </script>
+
+  <script id="gouraud-frag" type="x-shader/x-fragment">
+  precision mediump float;
+  varying vec3 fColor;
+  void main() {
+    gl_FragColor = vec4(fColor, 1.0);
+  }
+  </script>
+
+  <!-- ===== Phong (per-fragment lighting) ===== -->
+  <script id="phong-vert" type="x-shader/x-vertex">
+  attribute vec3 vPosition;
+  attribute vec3 vNormal;
+
+  uniform mat4 uModel;
+  uniform mat4 uView;
+  uniform mat4 uProj;
+  uniform mat3 uNormalMat;
+
+  varying vec3 fWorldPos;
+  varying vec3 fNormal;
+
+  void main() {
+    vec4 wp = uModel * vec4(vPosition, 1.0);
+    fWorldPos = wp.xyz;
+    fNormal = normalize(uNormalMat * vNormal);
+    gl_Position = uProj * uView * wp;
+  }
+  </script>
+
+  <script id="phong-frag" type="x-shader/x-fragment">
+  precision mediump float;
+
+  varying vec3 fWorldPos;
+  varying vec3 fNormal;
+
+  uniform vec3 uLightPos;
+  uniform vec3 uViewPos;
+  uniform vec3 uLightColor;
+
+  uniform vec3 uMatAmbient;
+  uniform vec3 uMatDiffuse;
+  uniform vec3 uMatSpecular;
+  uniform float uShininess;
+
+  uniform float uA;
+  uniform float uB;
+  uniform float uC;
+
+  uniform bool uIsEarth; // apply blue-green gradient only to Earth
+
+  void main() {
+    vec3 N = normalize(fNormal);
+    vec3 L = normalize(uLightPos - fWorldPos);
+    vec3 V = normalize(uViewPos - fWorldPos);
+    vec3 R = reflect(-L, N);
+
+    float d = length(uLightPos - fWorldPos);
+    float atten = 1.0 / max(uA + uB*d + uC*d*d, 0.0001);
+
+    vec3 ambient = uMatAmbient;
+    float NdotL = max(dot(N,L), 0.0);
+    vec3 diffuse = NdotL * (uMatDiffuse * uLightColor);
+
+    float spec = 0.0;
+    if(NdotL > 0.0){
+      spec = pow(max(dot(R,V), 0.0), uShininess);
+    }
+    vec3 specular = spec * (uMatSpecular * uLightColor);
+
+    vec3 color = ambient + atten * (diffuse + specular);
+
+    // Earth-only blue->green gradient by latitude (N.y)
+    if (uIsEarth) {
+      vec3 gradient = mix(vec3(0.10, 0.50, 0.90),  // blue
+                          vec3(0.00, 0.70, 0.20),  // green
+                          clamp((N.y + 1.0) * 0.5, 0.0, 1.0));
+      color *= gradient;
+    }
+
+    gl_FragColor = vec4(color, 1.0);
+  }
+  </script>
+
+  <!-- ===== Unlit (for sun + orbit rings) ===== -->
+  <script id="unlit-vert" type="x-shader/x-vertex">
+  attribute vec3 vPosition;
+  uniform mat4 uModel;
+  uniform mat4 uView;
+  uniform mat4 uProj;
+  void main(){
+    gl_Position = uProj * uView * uModel * vec4(vPosition,1.0);
+  }
+  </script>
+
+  <script id="unlit-frag" type="x-shader/x-fragment">
+  precision mediump float;
+  uniform vec4 uColor;  // RGBA to support transparency
+  void main(){ gl_FragColor = uColor; }
+  </script>
+
+  <!-- Angel / MV.js helpers -->
+  <script type="text/javascript" src="../moon-jellyfish/Common/webgl-utils.js"></script>
+  <script type="text/javascript" src="../moon-jellyfish/Common/initShaders.js"></script>
+  <script type="text/javascript" src="../moon-jellyfish/Common/MV.js"></script>
+
+  <!-- App -->
+  <script src="SolarSystem_Lighting.js"></script>
+</body>
+</html>

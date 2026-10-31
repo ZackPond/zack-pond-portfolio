@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Moon Jellyfish</title>
+
+  <!-- Helper scripts from the Common folder -->
+  <script src="../Common/webgl-utils.js"></script>
+  <script src="../Common/initShaders.js"></script>
+  <script src="../Common/MV.js"></script>
+
+  <!-- Main JS -->
+  <script src="jellyfish.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #000010;
+      width: 100%;
+      height: 100%;
+    }
+    #gl-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    #controls-panel {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 10;
+      max-width: 260px;
+      padding: 10px 12px;
+      background: rgba(0, 0, 0, 0.55);
+      color: #e0e8ff;
+      font-family: sans-serif;
+      font-size: 11px;
+      line-height: 1.4;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(3px);
+    }
+
+    #controls-panel h3 {
+      margin: 6px 0 4px 0;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #9fb5ff;
+    }
+
+    #controls-panel ul {
+      margin: 0 0 8px 0;
+      padding-left: 16px;
+    }
+
+    #controls-panel li {
+      margin-bottom: 2px;
+    }
+
+    #controls-panel button {
+      padding: 4px 8px;
+      margin: 2px;
+      font-size: 11px;
+      background: rgba(255,255,255,0.15);
+      color: #e0e8ff;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    #controls-panel button:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .color-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    #light-intensity {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Unified UI panel -->
+  <div id="controls-panel">
+
+    <h3>Camera Controls</h3>
+    <ul>
+      <li><strong>Left / Right Arrow</strong> – orbit</li>
+      <li><strong>Up / Down Arrow</strong> – tilt</li>
+      <li><strong>W</strong> – zoom in</li>
+      <li><strong>S</strong> – zoom out</li>
+      <li><strong>R</strong> – reset view</li>
+    </ul>
+
+    <h3>Color Schemes</h3>
+    <div class="color-row">
+      <button onclick="setColorScheme(0)">Blue</button>
+      <button onclick="setColorScheme(1)">White</button>
+      <button onclick="setColorScheme(2)">Pink</button>
+      <button onclick="setColorScheme(3)">Glow in the dark</button>
+    </div>
+
+    <h3>Light</h3>
+    <div>
+      <label style="display:block; margin-top:4px;">
+        Intensity
+        <input id="light-intensity" type="range"
+               min="0" max="1" step="0.01"
+               value="1"
+               oninput="setLightIntensity(this.value)">
+      </label>
+    </div>
+
+  </div>
+
+  <canvas id="gl-canvas"></canvas>
+
+  <!-- Vertex shader -->
+  <script id="vertex-shader" type="x-shader/x-vertex">
+  precision mediump float;
+
+  attribute vec3 aPosition;
+  attribute vec3 aNormal;
+
+  uniform mat4 uModelView;
+  uniform mat4 uProjection;
+  uniform float uTime;
+
+  varying vec3 vNormal;
+  varying vec3 vPositionMV;
+  varying float vGlowFactor;
+  varying vec3 vLocalPos;   // object-space position for clover and frill logic
+
+  void main() {
+      vec3 pos = aPosition;
+      vLocalPos = aPosition;
+
+      // Soft pulsation of the bell top
+      float pulse = 1.0 + 0.05 * sin(uTime * 2.0);
+      if (pos.y > -0.02) {
+          pos.y *= pulse;
+      }
+
+      // Gentle sway for frills (y < 0)
+      if (pos.y < 0.0) {
+          float depth = -pos.y;
+          float sway = 0.05 * sin(uTime * 3.0 + pos.x * 10.0 + pos.z * 10.0) * depth;
+          pos.x += sway;
+          pos.z += sway * 0.4;
+      }
+
+      vec4 posMV = uModelView * vec4(pos, 1.0);
+      vPositionMV = posMV.xyz;
+
+      vNormal = mat3(uModelView) * aNormal;
+
+      // Localize glow to the very bottom of the bell:
+      // bell bottom is near y ≈ 0 in object space.
+      float rim = (1.0 - smoothstep(0.0, 0.15, aPosition.y));
+      vGlowFactor = rim;
+
+      gl_Position = uProjection * posMV;
+  }
+  </script>
+
+  <!-- Fragment shader -->
+  <script id="fragment-shader" type="x-shader/x-fragment">
+  precision mediump float;
+
+  varying vec3 vNormal;
+  varying vec3 vPositionMV;
+  varying float vGlowFactor;
+  varying vec3 vLocalPos;
+
+  uniform vec3 uLightDir;
+  uniform vec3 uBaseColor;
+  uniform vec3 uGlowColor;
+  uniform vec3 uInnerColor;
+  uniform float uLightIntensity;
+
+  void main() {
+      vec3 N = normalize(vNormal);
+      vec3 L = normalize(uLightDir);
+      vec3 V = normalize(-vPositionMV);
+
+      float diff = max(dot(N, L), 0.0);
+
+      vec3 H = normalize(L + V);
+      float spec = pow(max(dot(N, H), 0.0), 16.0);
+
+      float rimLight = pow(1.0 - max(dot(N, V), 0.0), 2.0);
+
+      // Clamp intensity to [0,1]
+      float I = clamp(uLightIntensity, 0.0, 1.0);
+
+      // --- Base body lighting (fades out when I -> 0) ---
+      vec3 baseTerm = uBaseColor * (0.20 + 0.7 * diff) * I;
+      vec3 specTerm = vec3(1.0) * spec * 0.45 * I;
+
+      // --- Glow factor (bottom-of-bell + rim glow) ---
+      float glow = vGlowFactor * 0.7 + rimLight * 0.4;
+
+      // At low intensity, glow relatively stronger; at high intensity, softened.
+      float glowScale = mix(1.3, 0.8, I);
+
+      // --- Approximate "is this frill below the bell?" flag ---
+      // Bell vertices are at y >= 0; frills hang below y < 0.
+      float isFrill = step(0.0, -vLocalPos.y);  // 1 if y < 0, else 0
+
+      // --- Center frill mask: near the vertical axis and below the bell ---
+      vec2 pf = vLocalPos.xz;
+      float rf = length(pf);
+      // Strong near the center line (small radius)
+      float centerRadMask = 1.0 - smoothstep(0.20, 0.45, rf);
+      // Only for the hanging region below the bell
+      float centerHeightMask = smoothstep(-1.2, -0.05, vLocalPos.y);
+      float centerFrillMask = centerRadMask * centerHeightMask * isFrill;
+
+      // For frill glow:
+      //  - At I = 1: all frills glow (factor = 1 everywhere)
+      //  - At I = 0: only center frill glows (factor = centerFrillMask)
+      float frillGlowFactor = I + (1.0 - I) * centerFrillMask;
+
+      // Separate bell and frill glow contributions
+      vec3 glowBell  = uGlowColor * glow * glowScale * (1.0 - isFrill);           // bell + upper region
+      vec3 glowFrill = uGlowColor * glow * glowScale * isFrill * frillGlowFactor; // hanging frills
+
+      // --- Clover pattern on top of the bell ---
+      vec2 p = vLocalPos.xz;
+      float r = length(p);
+
+      float ring = smoothstep(0.37, 0.34, r) *
+                   (1.0 - smoothstep(0.43, 0.40, r));
+
+      float lobes = 0.0;
+      for (int i = 0; i < 4; ++i) {
+          float angle = 0.785398 + 1.570796 * float(i);
+          vec2 c = vec2(cos(angle), sin(angle)) * 0.20;
+          float d = length(p - c);
+          float lobe = 1.0 - smoothstep(0.05, 0.09, d);
+          lobes = max(lobes, lobe);
+      }
+
+      float cloverMask = max(ring, lobes);
+      cloverMask *= smoothstep(-0.05, 0.2, vLocalPos.y);
+
+      // Clover is a bit stronger when the scene is darker
+      float cloverScale = mix(1.4, 1.0, I);
+      vec3 cloverTerm = uInnerColor * cloverMask * cloverScale;
+
+      // --- Final color ---
+      vec3 color = baseTerm + specTerm + glowBell + glowFrill + cloverTerm;
+
+      // --- Transparency control ---
+      float alphaBase = 0.15 + glow * 0.5;
+      alphaBase = max(alphaBase, 0.15 + 0.4 * cloverMask);
+
+      // At full light (I=1) more see-through; at low light keep it denser.
+      float alpha = mix(alphaBase, alphaBase * 0.6, I);
+
+      gl_FragColor = vec4(color, alpha);
+  }
+  </script>
+
+</body>
+</html>

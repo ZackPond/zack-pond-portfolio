@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Contact Lives Rediscovered about genealogy and historical research.">
+  <title>Contact — Lives Rediscovered</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="interior-page contact-page">
+    <header class="site-header records-header">
+    <div class="records-masthead">
+      <div class="records-header-art" aria-hidden="true"></div>
+      <div class="brand-wrap shell">
+      <a class="brand-name" href="index.html">Lives Rediscovered</a>
+      <p class="brand-tagline">Genealogical &amp; Historical Research</p>
+      <div class="header-divider" aria-hidden="true"><span></span>✦<span></span></div>
+      </div>
+    </div>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">Menu</button>
+      <ul id="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="services-menu"><button class="services-trigger" aria-expanded="false">Services <span>▾</span></button>
+          <ul class="services-dropdown">
+            <li><a href="family-history-research.html">Family History Research</a></li>
+            <li><a href="paleography-historical-documents.html">Paleography &amp; Historical Documents</a></li>
+            <li><a href="house-property-histories.html">House &amp; Property Histories</a></li>
+            <li><a href="arizona-miners-research.html">Arizona Miners Research</a></li>
+          </ul>
+        </li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a class="active" href="contact.html">Contact</a></li>
+        <li><a class="cart-link" href="cart.html" aria-label="Shopping cart">🛒 <span class="cart-count" aria-label="items in cart">0</span></a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="navy-band" aria-hidden="true"></div>
+
+  <main class="page-shell contact-content">
+    <h1 class="page-title">Contact</h1>
+    <div class="title-rule">— ✦ —</div>
+    <p class="contact-intro">Have a question or a research project in mind?<br>I’d be glad to hear from you and will be in touch soon.</p>
+    <form id="contact-form" class="contact-form">
+      <div class="form-row">
+        <label>First Name<input type="text" name="firstName" autocomplete="given-name" required></label>
+        <label>Last Name<input type="text" name="lastName" autocomplete="family-name" required></label>
+      </div>
+      <label>Email Address<input type="email" name="email" autocomplete="email" required></label>
+      <label>Comment or Question<textarea name="message" rows="6" required></textarea></label>
+      <button class="button-primary contact-submit" type="submit">Send Message <span>→</span></button>
+      <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <img src="assets/lives-rediscovered-footer-logo.webp" alt="Lives Rediscovered — Genealogical and Historical Research">
+    <small>Copyright © 2026 Lives Rediscovered™. All rights reserved.</small>
+  </footer>
+  <script src="js/script.js"></script>
+</body>
+</html>

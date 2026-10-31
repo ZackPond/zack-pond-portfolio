@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Your Lives Rediscovered research engagement cart.">
+  <title>Cart — Lives Rediscovered</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="interior-page cart-page">
+    <header class="site-header records-header">
+    <div class="records-masthead">
+      <div class="records-header-art" aria-hidden="true"></div>
+      <div class="brand-wrap shell">
+      <a class="brand-name" href="index.html">Lives Rediscovered</a>
+      <p class="brand-tagline">Genealogical &amp; Historical Research</p>
+      <div class="header-divider" aria-hidden="true"><span></span>✦<span></span></div>
+      </div>
+    </div>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">Menu</button>
+      <ul id="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="services-menu"><button class="services-trigger" aria-expanded="false">Services <span>▾</span></button>
+          <ul class="services-dropdown">
+            <li><a href="family-history-research.html">Family History Research</a></li>
+            <li><a href="paleography-historical-documents.html">Paleography &amp; Historical Documents</a></li>
+            <li><a href="house-property-histories.html">House &amp; Property Histories</a></li>
+            <li><a href="arizona-miners-research.html">Arizona Miners Research</a></li>
+          </ul>
+        </li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a class="cart-link active" href="cart.html" aria-label="Shopping cart">🛒 <span class="cart-count" aria-label="items in cart">0</span></a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="navy-band" aria-hidden="true"></div>
+
+  <main class="cart-shell">
+    <div id="cart-notice" class="cart-notice" hidden><span class="notice-check">✓</span><p><strong id="notice-item"></strong> has been added to your cart.</p><a href="pricing.html">Continue Shopping <span>→</span></a></div>
+    <div class="cart-layout">
+      <section class="cart-table-wrap" aria-labelledby="cart-heading">
+        <h1 id="cart-heading" class="visually-hidden">Research Engagement Cart</h1>
+        <div class="cart-table-head"><span>Research Engagement</span><span>Price</span><span>Quantity</span><span>Subtotal</span></div>
+        <div id="cart-items" class="cart-items"></div>
+        <div id="empty-cart" class="empty-cart" hidden><h2>Your cart is empty.</h2><p>Choose a research engagement to begin.</p><a class="button-primary" href="pricing.html">View Research Services</a></div>
+      </section>
+      <aside class="cart-totals" aria-labelledby="totals-heading">
+        <h2 id="totals-heading">Cart Totals</h2><div class="title-rule">— ✦ —</div>
+        <dl><div><dt>Items in Cart</dt><dd id="cart-item-count">0</dd></div><div><dt>Cart Subtotal</dt><dd id="cart-subtotal">$0.00</dd></div><div><dt>Tax</dt><dd>$0.00</dd></div><div class="order-total"><dt>Order Total</dt><dd id="cart-total">$0.00</dd></div></dl>
+        <a id="checkout-button" class="button-primary checkout-button" href="contact.html?subject=Research%20Engagement">Proceed to Checkout <span>→</span></a>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <img src="assets/lives-rediscovered-footer-logo.webp" alt="Lives Rediscovered — Genealogical and Historical Research">
+    <small>Copyright © 2026 Lives Rediscovered™. All rights reserved.</small>
+  </footer>
+  <script src="js/script.js"></script>
+</body>
+</html>

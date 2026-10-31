@@ -1,0 +1,70 @@
+/* V41: Shared header geometry across homepage and all interior pages.
+   Brand block stays rectangular; every navigation item becomes a pointed hex tab. */
+@media(min-width:921px){
+ body.home .crisp-brand,body.home .crisp-nav{height:9.05dvh!important}
+ .realm-masthead{height:9.05dvh!important}
+ .realm-masthead .crisp-brand,.realm-masthead .crisp-nav{height:100%!important}
+}
+.header-about-contact{display:none!important}
+.crisp-social{display:none!important}
+
+/* identical nav geometry everywhere */
+.crisp-nav{left:29.4%!important;width:67.6%!important;background:transparent!important;border:0!important;box-shadow:none!important;display:flex!important;align-items:stretch!important;gap:.36%!important;padding:0!important;overflow:visible!important}
+.crisp-nav::after{display:none!important}
+.crisp-nav a{position:relative!important;flex:1 1 0!important;min-width:0!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:1px!important;padding:.25% .2% .78%!important;border:1px solid #a8c3df8f!important;border-left:1px solid #a8c3df8f!important;color:#eff5ff!important;text-decoration:none!important;background:linear-gradient(180deg,#102644f6,#07192ff8 92%)!important;box-shadow:inset 0 1px #e8f4ff1f,0 8px 20px #010e1860!important;clip-path:polygon(10% 0,90% 0,100% 20%,100% 76%,50% 100%,0 76%,0 20%)!important;transition:background .2s,box-shadow .2s,color .2s,transform .2s,border-color .2s!important}
+.crisp-nav a::after{display:none!important}
+.crisp-nav a:hover,.crisp-nav a:focus-visible,.crisp-nav a[aria-current=page]{background:linear-gradient(180deg,#173560fa,#12385edc)!important;color:#fff!important;border-color:#d6e9ff!important;box-shadow:inset 0 1px #f7fbff30,0 0 0 1px #7fbdfb66,0 8px 24px #0b203873,0 0 18px #5eb7ff21!important;transform:translateY(-1px)!important}
+.crisp-nav a .nav-emblem{margin-top:-1px!important}
+.crisp-nav a span{font-size:clamp(9px,.73vw,13px)!important;line-height:1.12!important;white-space:nowrap!important;text-align:center!important}
+.crisp-nav a small{font-size:clamp(6px,.48vw,9px)!important;line-height:1.08!important;color:#a9bed9!important;letter-spacing:0!important;white-space:nowrap!important;text-align:center!important;font-family:'DM Sans',sans-serif!important}
+.crisp-nav a[href="about.html"],.crisp-nav a[href="contact.html"]{justify-content:center!important;padding-top:.42%!important}
+.crisp-nav a[href="about.html"] span,.crisp-nav a[href="contact.html"] span{font-size:clamp(10px,.82vw,14px)!important}
+.realm-masthead .crisp-nav,.realm-masthead .crisp-brand{top:0!important}
+@media(max-width:920px){.header-about-contact{display:none!important}}
+
+/* V42: equal spacing including the first Home tab, with brand safely separated. */
+.crisp-nav{left:30.1%!important;width:66.9%!important;gap:.65%!important;}
+.crisp-nav a{margin:0!important;}
+
+/* V43: Longer About label uses smaller type but identical nav tab geometry. */
+.crisp-nav a[href="about.html"] span{font-size:clamp(8px,.64vw,11px)!important;letter-spacing:-.025em!important;}
+
+
+/* V90: Pin the *real* homepage navigation, not the magic/menu toolbar. */
+body.home .home-top{position:fixed!important;top:auto!important;left:auto!important;right:16px!important;bottom:18px!important;width:auto!important;z-index:155!important}
+body.home{padding-top:0!important}
+body.home .mobile-menu:not([hidden]){position:fixed!important;z-index:160!important}
+body.home .home-fixed-navigation{position:fixed;top:0;left:0;right:0;height:9.05dvh;min-height:62px;z-index:150;pointer-events:none;background:linear-gradient(180deg,#061629fa,#07182ce8);border-bottom:1px solid #a9c9e57d;box-shadow:0 6px 22px #0008;font-family:'Cinzel',Georgia,serif}
+body.home .home-fixed-navigation a{pointer-events:auto}
+body.home .home-fixed-navigation .crisp-brand,body.home .home-fixed-navigation .crisp-nav{height:100%!important;top:0!important}
+body.home .home-fixed-navigation .crisp-nav{left:30.1%!important;width:66.9%!important}
+body.home .crisp-ui>.crisp-brand,body.home .crisp-ui>.crisp-nav{display:none!important}
+@media(max-width:920px){body.home .home-fixed-navigation{height:78px;min-height:78px}body.home .home-fixed-navigation .crisp-brand{width:70%!important;height:100%!important}body.home .home-fixed-navigation .crisp-brand strong{font-size:clamp(13px,3vw,23px)}body.home .home-fixed-navigation .crisp-nav{display:none!important}}
+
+/* V94 — current page tab projects below the navigation edge. */
+.crisp-nav a[aria-current="page"]{z-index:4!important;overflow:visible!important;transform:translateY(6px)!important;filter:drop-shadow(0 3px 6px #8dbfe678)!important;clip-path:polygon(10% 0,90% 0,100% 18%,100% 83%,85% 100%,15% 100%,0 83%,0 18%)!important}
+.crisp-nav a[aria-current="page"]:hover{transform:translateY(6px)!important}
+@media(max-width:920px){.crisp-nav a[aria-current="page"]{transform:none!important}}
+
+/* V175 — active destination drops as a long hanging pennant.
+   Preserve the horizontal slot and top edge; extend only downward. */
+@media (min-width:921px){
+  .crisp-nav a[aria-current="page"]{
+    box-sizing:border-box!important;
+    align-self:flex-start!important;
+    height:145%!important;
+    min-height:0!important;
+    padding-top:12px!important;
+    padding-bottom:25px!important;
+    justify-content:flex-start!important;
+    clip-path:polygon(0 0,100% 0,100% 86%,50% 100%,0 86%)!important;
+    transform:none!important;
+    border-radius:0!important;
+    background:linear-gradient(180deg,#18395d 0%,#123351 58%,#091d34 100%)!important;
+    filter:drop-shadow(0 7px 8px #020d1bb3)!important;
+    transition:background .2s,filter .2s!important;
+  }
+  .crisp-nav a[aria-current="page"]:hover,
+  .crisp-nav a[aria-current="page"]:focus-visible{transform:none!important}
+  .crisp-nav a[aria-current="page"] .nav-emblem{flex-shrink:0!important}
+}

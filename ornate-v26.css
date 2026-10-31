@@ -1,0 +1,98 @@
+
+/* V26 — Noble arcane masthead + deliberately illustrated interface; background artwork unchanged */
+:root{--v26-silver:#d4e8fa;--v26-ice:#9ce0ff;--v26-navy:#07172f;--v26-amber:#bc9d71}
+.crisp-ui{font-family:'Cinzel',Georgia,serif;}
+.crisp-brand{left:0;top:0;width:29.4%;height:9.05%;padding:0 1.1% 0 2.4%;gap:1.8%;background:linear-gradient(105deg,#061226fa,#091a33f9 70%,#101f3bf4)!important;box-shadow:inset 0 -2px #8fb2da8a,0 4px 18px #02101b7a!important;border-bottom:1px solid #bddafa80;border-right:1px solid #b4d1ec36;isolation:isolate;overflow:visible}
+.crisp-brand::before{content:'';position:absolute;inset:0;pointer-events:none;background:url('assets/header-filigree.svg') center/100% 100% no-repeat;opacity:.58;z-index:-1}
+.crisp-brand::after{content:'';position:absolute;width:7px;height:7px;background:#b5dfff;border:1px solid #21446b;right:-5px;bottom:-5px;transform:rotate(45deg);box-shadow:0 0 12px #77c6ff}
+.crisp-brand img{height:104%;max-height:none;aspect-ratio:1;width:auto;object-fit:contain;mix-blend-mode:normal!important;filter:drop-shadow(0 0 8px #4ca9ffb9) drop-shadow(0 0 3px #a3e2ff8a)!important;flex:none}
+.crisp-brand span{position:relative;z-index:1;white-space:nowrap}
+.crisp-brand strong{font-family:'Cinzel',Georgia,serif;font-size:clamp(15px,2.04vw,33px);letter-spacing:.23em;color:#f5faff;text-shadow:0 1px 2px #0006;font-weight:500}
+.crisp-brand small{font-family:'DM Sans',sans-serif;font-size:clamp(6px,.61vw,10px);letter-spacing:.10em;color:#c5d6ec}
+.crisp-brand:hover img,.crisp-brand:focus-visible img{filter:drop-shadow(0 0 14px #7ce5ff) drop-shadow(0 0 3px #bdeaff)!important}
+.crisp-nav{position:absolute;top:0;left:29.4%;height:9.05%;width:50.9%;display:flex;align-items:stretch;background:linear-gradient(180deg,#0e203cfa,#061225fc 90%)!important;border:0;border-bottom:2px solid #aac7e79e;box-shadow:inset 0 1px #d4e8fa19,0 7px 22px #00101b63!important}
+.crisp-nav::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;pointer-events:none;background:linear-gradient(90deg,transparent,#e1ecfa7f 13%,#d4e5faaf 50%,#e1ecfa7f 87%,transparent)}
+.crisp-nav a{position:relative;flex:1;min-width:0;gap:1px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-left:1px solid #7e9cba46;color:#eff5ff;font:500 clamp(10px,.95vw,16px) 'Cinzel',Georgia,serif;line-height:1.2;text-shadow:none;transition:background .2s,box-shadow .2s,color .2s}
+.crisp-nav a::after{content:'';position:absolute;bottom:-5px;left:50%;width:5px;height:5px;background:#b5dafa;transform:translateX(-50%) rotate(45deg);border:1px solid #365d8b;box-shadow:0 0 5px #6eb6ff;opacity:.6;transition:opacity .2s,box-shadow .2s}
+.crisp-nav a:hover,.crisp-nav a:focus-visible,.crisp-nav a[aria-current=page]{background:linear-gradient(180deg,#142c50f8,#12385edc)!important;color:#fff;box-shadow:inset 0 -3px #9dcaf8,0 0 24px #4dafff18}
+.crisp-nav a:hover::after,.crisp-nav a:focus-visible::after,.crisp-nav a[aria-current=page]::after{opacity:1;box-shadow:0 0 12px #87c8ff}
+.nav-emblem{display:block;width:clamp(22px,2.15vw,35px);height:clamp(22px,2.15vw,35px);object-fit:contain;opacity:.95;filter:drop-shadow(0 0 3px #75baf547);transition:transform .2s,filter .2s}
+.crisp-nav a:hover .nav-emblem,.crisp-nav a:focus-visible .nav-emblem{transform:translateY(-2px);filter:drop-shadow(0 0 6px #a4e4ff)}
+.crisp-nav a span{font-size:clamp(10px,.85vw,14px);white-space:nowrap;line-height:1.2}
+.crisp-nav a small{font-size:clamp(7px,.58vw,10px);color:#9fb6d1;letter-spacing:.01em;white-space:nowrap;font-family:'DM Sans',sans-serif}
+.crisp-social{position:absolute;z-index:7;left:82.3%;top:2.1%;width:15%;height:4.6%;display:flex;align-items:center;justify-content:space-evenly;border:1px solid #91b3d2ac;clip-path:polygon(7% 0,93% 0,100% 50%,93% 100%,7% 100%,0 50%);background:linear-gradient(180deg,#0b2343ed,#07152bf9);box-shadow:inset 0 0 0 2px #afcbe225;pointer-events:auto}
+.crisp-social a{display:grid;place-items:center;width:30%;height:100%;color:#b9dafa;font:700 clamp(12px,1.25vw,20px) 'DM Sans',sans-serif;transition:color .16s,text-shadow .16s,background .16s}
+.crisp-social a:hover,.crisp-social a:focus-visible{color:#fff;background:#28517d83;text-shadow:0 0 8px #a2d9ff}
+.crisp-social .social-pict{font-size:1.24em}.crisp-social .social-play{font-size:.85em}
+/* Live location frames: engraved plaques and distinct architectural roundels */
+.crisp-banner{position:absolute;min-height:7.1%;width:16%;border:0!important;outline:0!important;clip-path:none!important;overflow:visible;background:transparent url('assets/heraldic-plaque.svg') center/100% 100% no-repeat!important;box-shadow:none!important;filter:drop-shadow(0 5px 5px #00152ca6);transform:translate(-50%,-50%);transition:transform .2s ease,filter .2s ease!important;z-index:10}
+.crisp-banner a{position:relative;min-height:64px!important;height:100%;width:100%;padding:22px 9% 7px!important;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;text-shadow:0 2px 3px #001019f0}
+.crisp-banner strong{font:500 clamp(10px,1.06vw,17px)/1.1 'Cinzel',serif;white-space:nowrap;letter-spacing:.035em}
+.crisp-banner small{font:400 clamp(8px,.67vw,12px)/1.15 'DM Sans',sans-serif;color:#c4d3e8;letter-spacing:.03em;white-space:nowrap;margin-top:3px}
+.region-medallion{position:absolute;left:50%;top:-19px;transform:translateX(-50%);width:42px;height:42px;display:grid;place-items:center;border:2px solid #c4d9f1;border-radius:50%;background:radial-gradient(circle at 42% 32%,#214d7c,#07162f 75%);box-shadow:0 0 0 3px #061b37c9,inset 0 0 0 2px #4975a572,0 5px 14px #0009,0 0 12px #87baff20;transition:box-shadow .2s,transform .2s}
+.region-medallion img{height:27px;width:27px;object-fit:contain;filter:drop-shadow(0 0 3px #88cfff6b)}
+.crisp-banner:hover,.crisp-banner:focus-within{transform:translate(-50%,-50%) scale(1.055)!important;filter:drop-shadow(0 0 12px #82c4ffb9) drop-shadow(0 5px 6px #041224)!important;background:transparent url('assets/heraldic-plaque.svg') center/100% 100% no-repeat!important;box-shadow:none!important}
+.crisp-banner:hover .region-medallion,.crisp-banner:focus-within .region-medallion{box-shadow:0 0 0 3px #0b2450,inset 0 0 0 2px #aecfed,0 0 25px #64b5ffab;transform:translateX(-50%) translateY(-2px)}
+.crisp-banner a:focus-visible{outline:2px solid #c4ecff;outline-offset:5px;border-radius:6px}
+/* A little extra width for long names, but each label remains tied to its landmark. */
+.crisp-citadel{left:42%;top:30.6%;width:16.2%}.crisp-arena{left:36%;top:50.2%;width:16.2%}.crisp-workshop{left:72%;top:38.9%;width:16.6%}.crisp-hall{left:80.8%;top:57.6%;width:20%}.crisp-archives{left:91%;top:27.5%;width:16.4%}
+/* Leave the approved art and hero unmodified; refine primary CTA only. */
+.crisp-action,.crisp-feature-action{position:relative;border:1px solid #c5dbeb!important;background:linear-gradient(180deg,#143b66,#071932)!important;box-shadow:inset 0 0 0 1px #7cadd04f,0 4px 16px #05101b7d!important;color:#f2f8ff;transition:background .2s,box-shadow .2s}
+.crisp-action::before,.crisp-feature-action::before{content:'✧';position:absolute;left:6px;top:50%;transform:translateY(-50%);font-size:.7em;color:#a7cbea}
+.crisp-action:hover,.crisp-feature-action:hover{background:linear-gradient(180deg,#265d91,#0b2a57)!important;box-shadow:inset 0 0 0 1px #dbefff79,0 0 17px #6bbfff80!important}
+/* Interior-page header carries same deliberate heraldic identity. */
+.site-header{border-bottom:1px solid #adc8e786;box-shadow:inset 0 -1px #d6edfb2d,0 12px 40px #01091899;background:linear-gradient(180deg,#0c2341f7,#051426f9)}
+.site-logo::before{background:url('assets/official-crest-clear-v26.png') center/contain no-repeat!important;width:54px;height:54px;box-shadow:none!important;filter:drop-shadow(0 0 6px #7cd4ff)!important}
+.site-nav a{font-family:'Cinzel',serif;border-bottom:1px solid transparent;transition:background .2s,border-color .2s}
+.site-nav a:hover,.site-nav a:focus-visible,.site-nav a.active{background:linear-gradient(180deg,#2149748c,#0d264b);border-bottom-color:#a8d5ff}
+@media(max-width:1070px){.crisp-nav a small{display:none}.crisp-brand strong{font-size:23px}.crisp-banner a{min-height:64px!important}}
+@media(prefers-reduced-motion:reduce){.crisp-nav a,.nav-emblem,.crisp-banner,.region-medallion{transition:none!important}}
+/* Maintain the saturated electric-blue intensity of the supplied original logo. */
+.crisp-brand img{filter:brightness(1.26) saturate(1.22) drop-shadow(0 0 5px #4caaffbd) drop-shadow(0 0 9px #4ca9ff9b)!important}
+.crisp-brand:hover img,.crisp-brand:focus-visible img{filter:brightness(1.34) saturate(1.28) drop-shadow(0 0 11px #74d6ff) drop-shadow(0 0 3px #d8ffff)!important}
+
+/* V27 — faithful brand rendering, preserves the uploaded RGB values for the whole emblem. */
+.crisp-brand img { height:111%!important; max-height:none!important; width:auto!important; aspect-ratio:1!important; object-fit:contain!important; opacity:1!important; mix-blend-mode:normal!important; filter:none!important; transform:translateZ(0); }
+.crisp-brand:hover img,.crisp-brand:focus-visible img { opacity:1!important; filter:drop-shadow(0 0 7px rgba(110,198,255,.45))!important; }
+.site-logo::before { background-image:url('assets/official-crest-v27-vivid.png')!important; background-size:contain!important; opacity:1!important; mix-blend-mode:normal!important; filter:none!important; }
+
+/* V46: The portal is a stationary non-interactive environmental element.
+   Only its matching heraldic destination banner is interactive. */
+body.home img.contact-portal{position:absolute;z-index:4;left:53.5%;top:57.2%;width:10.4%;height:auto;aspect-ratio:1;display:block;pointer-events:none;user-select:none;filter:drop-shadow(0 0 8px #5caefb6d);transform:none!important;transition:none!important;animation:none!important}
+body.home .crisp-gateway{left:58.7%;top:77.7%;width:16.2%;z-index:10}
+body.home .crisp-gateway a{cursor:pointer}
+
+
+/* V48: Lift all homepage destination emblems clear of their banner titles. */
+body.home .crisp-banner .region-medallion { top:-25px; }
+
+
+/* V49 — fine tune homepage medallion positions to clear text more cleanly. */
+body.home .crisp-citadel .region-medallion { top:-22px; }
+body.home .crisp-arena .region-medallion { top:-21px; }
+body.home .crisp-workshop .region-medallion { top:-22px; left:48.5%; }
+body.home .crisp-hall .region-medallion { top:-22px; left:51.5%; }
+body.home .crisp-archives .region-medallion { top:-23px; }
+
+/* V50: move complete homepage destination banners, NOT their icons. */
+body.home .crisp-arena { top:51.3%; }
+body.home .crisp-citadel { top:31.2%; }
+body.home .crisp-hall { top:58.5%; left:81.6%; }
+body.home .crisp-workshop { top:39.8%; left:71.2%; }
+body.home .crisp-archives { top:28.1%; }
+
+/* V147: Gateway takes the former Hall of Visions landmark; original central portal removed. */
+body.home .crisp-gateway{left:81.6%;top:58.5%;width:20%;z-index:10}
+body.home .crisp-gateway .region-medallion{top:-22px;left:51.5%}
+
+/* V180: Position landmark labels below the architectural focal points on the new homepage image. */
+body.home .crisp-citadel{top:37.0%;}
+body.home .crisp-arena{top:57.2%;}
+body.home .crisp-workshop{top:44.0%;}
+body.home .crisp-archives{top:34.0%;}
+body.home .crisp-gateway{top:65.0%;}
+
+/* V181 — homepage landmark corrections (keep all other locations intact). */
+body.home .crisp-behind-crest{left:8.3%;top:34%;}
+body.home .crisp-citadel{top:34.8%;}
+@media(max-width:1050px){body.home .crisp-behind-crest{left:8.3%;top:34%;}}
