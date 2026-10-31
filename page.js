@@ -441,6 +441,7 @@ main.innerHTML=realmHeading('GET IN TOUCH','The Gateway','Have a question, an op
     <p>I'd love to hear about opportunities in game development, gameplay programming, software engineering, or interactive media. Fill out the form below and your message will be delivered to my inbox.</p>
     <form class="gateway-form" action="https://formsubmit.co/lokiolbusiness@gmail.com" method="POST">
       <input type="hidden" name="_next" value="https://zackpond.github.io/zack-pond-portfolio/">
+      <input type="hidden" name="_url" value="https://zackpond.github.io/zack-pond-portfolio/">
       <div class="gateway-form-row">
         <label>Name:<input type="text" name="name" autocomplete="name" required></label>
         <label>Email:<input type="email" name="email" autocomplete="email" required></label>
